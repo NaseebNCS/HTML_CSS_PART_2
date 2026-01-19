@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords" content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main class="container two-column">
+    <section>
+
+      <div class="h-1">FLEX BOX</div>
+      <p>
+        Let’s talk about Flexbox, also known as the flexible box layout. Flexbox is a layout method used to arrange
+        elements in one dimension, either in a row or a column. It is easier to use and more powerful than floats.
+      </p>
+      <p>
+        Let's create a &lt;div> with the class container, and inside that container, we will create three boxes using
+        the class box. Add some content or label text to each box, such as A, B, and C. Now, let’s apply some basic
+        styles to these boxes.
+      </p>
+      <code>
+<pre>
+.container{
+        border: 3px solid lightgrey;
+}
+
+.box{
+        width: 5rem;
+        height: 5rem; 
+        background: gold; 
+        margin: 1rem; 
+}
+</pre>
+</code>
+      <p>
+        You will see three boxes on the browser laid out vertically. But what if we want these boxes to be horizontal?
+        That’s where we use Flexbox. A common use of flex is in navigation bars, because a navigation bar contains a
+        bunch of links, buttons, and other items arranged horizontally.
+      </p>
+      <p>
+        Let's now enable flex for the container by setting the display property.
+      </p>
+      <code>
+<pre>
+.container{
+        display: flex; 
+}
+</pre>
+</code>
+      <p>
+        The parent arranges its items horizontally, so we don’t need to use float or clear, or worry about parent
+        collapsing. This is the beauty of Flexbox: with Flexbox, we can layout a group of items in one direction, either
+        in a row or a column.
+      </p>
+      <p>
+        We can control the direction of flex items using the flex-direction property.
+      </p>
+      <code>
+<pre>
+.container{
+        display: flex; 
+        flex-direction: row; <span class="t-r">Default Value</span>
+        flex-direction: row-reverse; 
+        flex-direction: column; 
+        flex-direction: column-reverse; 
+}
+</pre>
+</code>
+      <p>
+        The row-reverse value is useful when creating layouts for languages such as Arabic, Farsi, Pashto, and others.
+      </p>
+
+      <h2>Flex Alignment</h2>
+      <p>
+        To align flex items in a flex container, we first need to understand the layout structure. It’s important to
+        grasp the concept of axes in Flexbox. In a flex container, there are two axes: the main (primary) axis and the
+        cross (secondary) axis. These axes depend on the direction of the flex container.
+        <br>
+        - If the flex-direction is set to row, the main axis runs horizontally, and the cross axis runs vertically.
+        <br>
+        - Conversely, if the flex-direction is set to column, the main axis becomes vertical, and the cross axis becomes
+        horizontal.
+      </p>
+      <img src="FLEX-BOX-ALIGNMENT-AXIS-CONCEPT.png" alt="flex box AXES image">
+      <p>
+        Why is it important to understand this layout? Using these axes, we can easily align flex items inside a flex
+        container. To align items, we need to remember two properties: justify-content and align-items. The
+        justify-content property is used to align items along the main (or primary) axis, while align-items is used to
+        align items along the cross (or secondary) axis. You might wonder why the naming isn’t consistent and why the
+        second property is sometimes called align-content.
+      </p>
+      <p>
+        now let's change the direction of the flex items or items to the row.
+      </p>
+      <code>
+<pre>
+.container{
+        display: flex; 
+        flex-direction: row; 
+}
+</pre>
+</code>
+      <p>
+        If we want to move items to the end of a container along the main axis, we can use the justify-content property
+        with various values.
+      </p>
+      <code>
+<pre>
+.container{
+        display: flex; 
+        flex-direction: row; 
+        justify-content: flex-start; <span class="t-r">Default Value</span>
+        justify-content: flex-end; 
+        justify-content: center; 
+        justify-content: space-evenly; 
+        justify-content: space-around; 
+        justify-content: space-between; 
+}
+</pre>
+</code>
+      <p>
+        No need to remember all of these values. We can always use the browser’s developer tools to check the
+        differences between them.
+      </p>
+      <p>
+        Using align-items, we can align items along the cross axis in this case, the vertical axis. Before we proceed,
+        we need to give a height to the container because, without it, there is no space for vertical or cross-axis
+        alignment. When we set the container’s display to flex, the elements inside behave like flex items, while the
+        container itself remains a block-level element outside.
+      </p>
+      <code>
+<pre>
+.container{
+        height: 90vh;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center;  
+        align-items: flex-start; 
+        align-items: flex-end; 
+        align-items: center; 
+}
+</pre>
+</code>
+      <p>
+        To center any element inside a container or box, we can use display: flex, along with justify-content: center
+        and align-items: center. These three properties allow you to center content both vertically and horizontally.
+      </p>
+
+      <h2>Flex Wrapping</h2>
+      <p>
+        There is another property in Flexbox called align-content, which comes into play when we have multiple lines of
+        items inside a container. To see it in action, create more boxes inside the container. As you add more boxes,
+        they shrink by default to fit in a single line this is the default behavior of a flex container. To allow
+        elements to wrap to the next line, we can use flex-wrap.
+      </p>
+      <code>
+<pre>
+.container{
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center;  
+        align-items: center; 
+        flex-wrap: nowrap; <span class="t-r">Default Value</span>
+        flex-wrap: wrap; 
+        flex-wrap: wrap-reverse; 
+}
+</pre>
+</code>
+
+      <h2>Flex Flow</h2>
+      <p>
+        Flex-flow CSS me shorthand property hai jo flex-direction aur flex-wrap ko ek hi line me set kar deta hai. Iska
+        kaam yeh hota hai ke flex items kis direction me arrange honge (row, column) aur agar space kam ho jaye to items
+        wrap honge ya nahi. Simple words me: flex-flow se aap batate ho items kis taraf jayenge aur overflow hone par
+        kya behaviour hoga.
+      </p>
+      <code>
+<pre>
+.container {
+          display: flex;
+          flex-flow: row wrap; 
+}
+</pre>
+      </code>
+
+      <h2>Multi Line Alignment</h2>
+      <p>
+        When we have multiple lines, you’ll notice that the elements are not centered within the container. We can
+        center these multi-line elements using the align-content property.
+      </p>
+      <code>
+<pre>
+.container{
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center;  
+        align-items: center; 
+        flex-wrap: wrap; 
+        align-content: flex-start; 
+        align-content: flex-end; 
+        align-content: center; 
+        align-content: space-around; 
+        align-content: space-between; 
+        align-content: space-evenly; 
+        align-content: baseline; 
+}
+</pre>
+</code>
+
+      <h2>Flex Items Properties</h2>
+      <p>
+        We can move individual flex items within a container using the align-self property. Note that this property is
+        applied to flex items, not the flex container. If you want to see the available values for any property in VS
+        Code, you can use Ctrl + Space, and it will list all possible options.
+      </p>
+      <code>
+<pre>
+.box1 {
+        align-self: flex-end; 
+        align-self: flex-start; 
+}
+</pre>
+</code>
+      <p>
+        This covers alignment. Now, let’s discuss flex sizing properties for flex items: <br>
+        - flex-basis: Sets the initial size of a flex item. <br>
+        - flex-grow: Determines how much a flex item can grow relative to other items. <br>
+        - flex-shrink: Determines how much a flex item can shrink relative to other items. <br>
+        - flex: A shorthand for flex-grow, flex-shrink, and flex-basis. <br> <br>
+        All these properties are applied to flex items, not the container. The flex-basis property sets the width or
+        height depending on the flex direction. Both flex-grow and flex-shrink have a default value of 0. If you want an
+        item to not grow or shrink, set its flex-grow or flex-shrink to 0. <br> <br>
+        - flex-grow allows an item to occupy available space in the container. <br>
+        - flex-shrink allows an item to shrink when necessary. <br> <br>
+        Items with larger values for flex-grow or flex-shrink will grow or shrink faster than others. These properties
+        take factor values (e.g., 0, 1, 2) and are not measurement units like px or %.
+      </p>
+      <p>
+        <strong>0. order:</strong> it is used to change the order of items in a flex box, order: 1 -> shift to the
+        right, order: -1 -> shift to the start.<br>
+        <strong>1. flex-basis</strong>
+        This sets the starting size of a flex item (like width).
+        <br>
+        <strong>2. flex-grow</strong>
+        Controls how much the item expands when there is extra space. <br>
+        <strong>3. flex-shrink</strong>
+        Controls how much the item shrinks when space is small.
+        <br>
+        <strong>4. flex (shorthand)</strong>
+        flex: grow shrink basis;
+        You can write all three in one line.
+      </p>
+      <code>
+<pre>
+.container {
+          display: flex;
+          gap: 10px;
+}
+
+<span class="t-r">Box 1: Grows more, shrinks less, starts at 100px</span>
+.box1 {
+          flex-grow: 2;
+          flex-shrink: 1;
+          flex-basis: 100px;
+}
+
+<span class="t-r">Box 2: Grows little, shrinks normally, starts at 150px</span>
+.box2 {
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: 150px;
+}
+
+<span class="t-r">Box 3: Using shorthand: flex: grow shrink basis</span>
+.box3 {
+          flex: 1 2 120px;
+}
+</pre>
+</code>
+
+      <h2>👆Explanation</h2>
+      <ul>
+        <li>flex is the shorthand of (grow shrink basis)</li>
+        <li>flex-basis sets the starting size of each box.</li>
+      </ul>
+
+      <h2>Home Work</h2>
+      <ol>
+        <li><a href="nav.html">NavBar</a></li>
+        <li><a href="card.html">Cards</a></li>
+        <li><a href="flex_HW2.png" target="_blank">Create These Layouts</a></li>
+      </ol>
+
+      <h2>Free Resources</h2>
+        <ul>
+          <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS Felx Layout
+              Guide</a></li>
+          <li><a href="https://flexboxfroggy.com/" target="_blank">Flex Box Froggy</a></li>
+          <li><a href="https://mastery.games/flexboxzombies/" target="_blank">Flex Box Zombie Game</a></li>
+          <li><a href="https://codingfantasy.com/games/flexboxadventure" target="_blank">Flex Box Adventure</a></li>
+          <li><a href="https://preview.webflow.com/preview/flexbox-game?preview=d1a26b027c4803817087a91c651e321f&m=1"
+              target="_blank">Flex Box Web Flow</a></li>
+          <li><a href="http://www.flexboxdefense.com/" target="_blank">Flex Box Defence</a></li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Test_your_skills/Position"
+              target="_blank">Test
+              Your Skill</a>
+          </li>
+        </ul>
+
+
+
+
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

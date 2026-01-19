@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords" content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main class="container two-column">
+    <section>
+
+      <div class="h-1">TYPOGRAPHY</div>
+
+      <h2>What we Will Learn?</h2>
+      <p>
+        Welcome to the next section of HTML & CSS Part 2! This section is all about Typography, which is the art of
+        creating beautiful and easy-to-read text. We will discuss styling fonts, embedding custom fonts, using font
+        services, and best practices for text sizes and spacing both vertical and horizontal. We’ll also cover how to
+        properly format text.
+      </p>
+      <p>
+        This topic is extremely important because almost 90% of a website’s content is text, so you must ensure your
+        text is readable and looks great on all screen sizes. Let’s get started!
+      </p>
+
+      <h2>Styling Fonts</h2>
+      <p>
+        To change the font style on a webpage, we use the font-family property. There are three main categories of fonts
+        used on the web:
+      </p>
+      <ol>
+        <li>Serif</li>
+        <li>Sans-serif</li>
+        <li>Monospace</li>
+      </ol>
+      <p>
+        There are more font categories, but they are mostly used in printing and are not very common on the web.
+      </p>
+      <p>
+        <strong>Serif fonts</strong> have small decorative strokes at the ends of their letters. Because of these
+        strokes, serif fonts
+        look more traditional, professional, and serious. They are often used in books, magazines, and newspapers.
+        Popular serif fonts include Georgia and Times New Roman.
+      </p>
+      <p>
+        <strong>Sans-serif fonts</strong> do not have those strokes. “Sans” means without. These fonts look clean,
+        modern, and easy to
+        read on screens. Popular sans-serif fonts include Avenir, Arial, Futura, Helvetica, Roboto, and many others.
+      </p>
+      <p>
+        <strong>Monospace fonts</strong> give every character the exact same amount of horizontal space. “Mono” means
+        one, so each letter takes one equal space. These fonts are commonly used for displaying code because they keep
+        everything aligned neatly. Popular monospace fonts include Consolas, Courier, and Ubuntu Mono.
+      </p>
+      <p>
+        The font you want to apply to most elements should be set on the body. You can always override it later for
+        specific elements.
+      </p>
+      <code>
+<pre>
+p{
+      font-family: roboto;
+}
+</pre>
+</code>
+
+      <h2>Web Safe Fonts</h2>
+      <p>
+        After typing font-family and pressing Ctrl + Space, VS Code suggests some fonts. These are called web-safe fonts
+        because they are available on most devices, which makes them safe to use in your designs.
+      </p>
+
+      <h2>Font Stack</h2>
+      <p>
+        Fonts are separated with commas, and this is called a font stack. A font stack is a list of similar fonts or
+        fonts from the same family. The browser checks the stack from left to right:
+      </p>
+      <ul>
+        <li>It tries to load the first font.</li>
+        <li>If the user’s device does not have that font installed, it moves to the next font in the list.</li>
+        <li>The last font is usually a generic font family (like serif, sans-serif, monospace).
+        </li>
+      </ul>
+      <p>
+        This way, we give multiple options, and the browser decides which font to use based on availability.
+      </p>
+      <code>
+<pre>
+body{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+</pre>
+</code>
+
+      <h2>Font Weight</h2>
+      <p>
+        Font-weight is used to control how bold or thick the text appears. The values range from 100 to 900:
+      </p>
+      <ul>
+        <li>100 = very thin</li>
+        <li>900 = very thick</li>
+      </ul>
+      <p>You can also use keywords:</p>
+      <ul>
+        <li>Bold = 700</li>
+        <li>normal = 400</li>
+      </ul>
+      <p>Using Ctrl + Space in VS Code helps you see all available values for the property.</p>
+      <code>
+<pre>
+p{
+       font-weight: bold; 
+       font-weight: 100; 
+       font-weight: 500; 
+}
+</pre>
+</code>
+
+      <h2>Font Style & Size</h2>
+      <p>
+        font-style is used to change the style of the font. Its default value is normal, but you can set it to italic to
+        italicize the text.
+      </p>
+      <p>font-size is used to change the size of the text. There are many possible values, and you can press Ctrl +
+        Space to see suggestions in most code editors.</p>
+      <code>
+<pre>
+p{
+        font-style: italic; 
+        font-size: 2rem;
+}
+</pre>
+</code>
+
+      <h2>Color & Accent Color</h2>
+      <p>
+        color is used to change the color of text or inline content, while accent-color is used to change the color of
+        form controls such as radio buttons, checkboxes, range sliders, and other UI elements.
+      </p>
+      <code>
+<pre>
+h1{
+        color: red;
+}
+
+input[type="checkbox"]{
+        accent-color: red;
+}
+</pre>
+</code>
+
+      <h2>Embedding Fonts</h2>
+      <p>
+        Web-safe fonts are available on almost all devices, and while they are reliable, they can be pretty boring.
+        These days, there are many websites where you can find beautiful fonts some free and some paid. One popular
+        website is <a href="https://www.fontsquirrel.com/" target="_blank">FontSquirrel.com</a>, where you can find
+        plenty of free, high-quality fonts.
+      </p>
+      <h4>Font Formats</h4>
+      <ul>
+        <li>TTF</li>
+        <li>OTF</li>
+        <li>EOT</li>
+        <li>WOFF</li>
+        <li>WOFF 2.0</li>
+      </ul>
+      <p>
+        You don’t need to memorize all the font formats, but you should know that fonts come in different formats just
+        like images and videos have their own file types. For the web, we usually use WOFF and WOFF2, because these
+        formats are highly compressed. Whenever you use custom fonts, always make sure their file size is as small as
+        possible so they can download quickly.
+      </p>
+      <h4>Download</h4>
+      <p>
+        Download any font from FontSquirrel by searching for fonts like Roboto, Open Sans, etc. When you download it,
+        you will get the font files in .ttf format. Inside the ZIP folder, you'll find multiple files each file
+        represents a different variant of the same font (such as regular, bold, italic, etc.).
+      </p>
+      <h4>How to Use</h4>
+      <p>You can install these fonts on your computer to use in applications like Word, Photoshop, and more. But for web
+        pages, we need to convert these .ttf files into .woff or .woff2 formats, because TTF files are large in size and
+        not optimized for the web. WOFF and WOFF2 are compressed web-friendly formats that load faster.</p>
+      <h4>Converting Font Formats</h4>
+      <p>
+        Go to the same website <a href="https://www.fontsquirrel.com/" target="_blank">FontSquirrel.com</a>, and open
+        the Generator tab. There you can upload the font file(s) you want
+        to convert. Upload one or multiple files, accept the agreement, and download Your Kit.
+      </p>
+      <p>
+        These days, most browsers support WOFF, and modern browsers also support WOFF2. After downloading the kit,
+        <strong>copy</strong>
+        the WOFF and WOFF2 font files into your project.
+      </p>
+      <h4>@font-face</h4>
+      <p>
+        Inside the downloaded folder, you will find a stylesheet that contains the @font-face rules. These rules tell
+        the browser where to find your font files. In the @font-face block, you’ll see properties such as font-family,
+        font-weight, font-style, and src. The src property includes a fallback stack, meaning: if the browser can’t load
+        the WOFF2 file, it will automatically try the WOFF file.
+      </p>
+      <h4>Copy & Rename</h4>
+      <p>Now copy these @font-face rules and paste them at the top of your project’s stylesheet. Make sure to correct
+        the file paths inside the src URLs to match the font location in your project.</p>
+      <p>
+        You can rename the font-family to any custom name you prefer. You can also adjust font-weight values if your
+        downloaded kit includes multiple variations (like Light, Regular, Bold) of the same font.
+      </p>
+
+      <h2>Flash of Unstyled Text</h2>
+      <p>
+        Let’s see this in action. Open your browser, go to Developer Tools, and click on the Network tab. First, disable
+        the “Disable cache” option. Cache is a type of permanent storage the browser uses to store website assets. When
+        we visit a website, the browser stores images, fonts, and other files in cache memory. Once we disable it, every
+        time we refresh the page, all resources are downloaded from scratch.
+      </p>
+      <h4>Refresh</h4>
+      <p>
+        After refreshing the page, you will see all files being requested from the server in the Network tab. The .woff
+        and .woff2 font files load in milliseconds because we are using our local fast machine. But what happens when a
+        real user has a slow internet connection? We can simulate that.
+      </p>
+      <h4>Cache</h4>
+      <p>
+        Right next to the “Disable cache” checkbox, you’ll see the Throttling option. Change it from Online to Slow 3G
+        (or Fast 3G). Now refresh the page again you will notice that the fonts take seconds to download. During this
+        delay, the user sees the fallback font first and then suddenly sees the custom font appear. This sudden change
+        is the Flash of Unstyled Text (FOUT).
+      </p>
+      <h4>FOUT</h4>
+      <p>
+        In large projects, FOUT can create a bad user experience because elements may shift when the custom font
+        replaces the fallback font.
+      </p>
+      <h4>Font Display</h4>
+      <p>
+        There is a technique to reduce (but not completely remove) FOUT: using the font-display property in CSS. It has
+        values like auto, swap, fallback, block, and optional.
+      </p>
+      <ul>
+        <li><strong>swap</strong> Best practical option. Shows fallback font immediately, then swaps to the custom
+          font once
+          downloaded.</li>
+        <li>
+          <strong>block</strong> Avoid this. It hides the text until the custom font loads. If the font never loads due
+          to network
+          issues, the text may never appear.
+        </li>
+        <li>
+          <strong>fallback</strong> Shows fallback font quickly and gives a smaller time window for swap.
+        </li>
+        <li>
+          <strong>optional</strong> Tells the browser: the custom font is nice to have but not critical. If the font
+          loads fast, it
+          will be used; otherwise, stick to the fallback. This avoids layout shifts.
+        </li>
+      </ul>
+      <p>
+        Once the font is downloaded, navigating to another page or refreshing will use the cached version, so the shift
+        won’t appear again.
+      </p>
+      <h4>Expert Settings</h4>
+      <p>If you use FontSquirrel, there are additional settings under “Expert Settings” that help reduce font size. You
+        can even use the custom sub-settings to include only the characters you need, which further reduces file size.
+      </p>
+
+      <h2>Font Services</h2>
+      <p>
+        Now we know how to use custom fonts, but some fonts need to be licensed, and licenses can be quite expensive.
+        This is where font services help us. One of the most popular services is Google Fonts, which gives you access to
+        tons of free fonts. All fonts on Google Fonts are free to use in personal and commercial projects.
+      </p>
+      <h4>Paid Fonts</h4>
+      <p>
+        There are also paid font services such as Adobe Fonts, Fonts.com, Fontdeck, and others. Most of these services
+        work on a subscription model, where you pay a monthly or yearly fee to access thousands of high-quality fonts.
+        Paid fonts usually look more premium and polished, so if you have the budget, you can use them. Otherwise, free
+        fonts are more than enough for most projects.
+      </p>
+      <h4>Free Fonts</h4>
+      <p>
+        To explore free fonts, visit fonts.google.com. You will find many fonts there, and you can search or filter by
+        categories. Spend some time (around 20–30 minutes) exploring the options, and you will become familiar with how
+        it works. For example, search for Open Sans. You will see different font weights and styles such as 400, 700,
+        900, etc.
+      </p>
+      <p>
+        After selecting a font, click the “Get font” button at the top right. You will see two main options:
+      </p>
+      <ul>
+        <li>Download the font files</li>
+        <li>Embed the font for online use</li>
+      </ul>
+      <p>
+        When using fonts online, Google Fonts provides two embedding options:
+      </p>
+      <ul>
+        <li>An HTML &lt;link&gt;</li>
+        <li>A CSS @import</li>
+      </ul>
+      <p>
+        If you copy the HTML &lt;link&gt; and paste it into your project, you will notice that it contains two links:
+      </p>
+      <ul>
+        <li>One for faster connection</li>
+        <li>One that loads the font service</li>
+      </ul>
+      <p>If you open the link of href value in a browser, you will see many CSS rules. These rules are loaded
+        automatically from
+        Google, so we don’t need to write them manually. At the bottom where you copied the link in Google Fonts page,
+        you will find the
+        font-family name, which you just need to copy and paste into your CSS.</p>
+
+      <h4>Query</h4>
+      <p>
+        If you look closely at the link from fonts.googleapis.com, the part after the ? is called a query string. Query
+        strings contain parameters, written using an = sign.
+      </p>
+      <ul>
+        <li>family is a parameter name</li>
+        <li>The value after = is the parameter value</li>
+      </ul>
+      <p>
+        The + symbol represents a space, because spaces are not allowed in URLs.
+      </p>
+      <p>
+        If you select multiple font families, you will see the & symbol, which is used to separate multiple parameters.
+      </p>
+      <p>This means:</p>
+      <ul>
+        <li>If you only want one font, you can remove the extra parameters after the &</li>
+        <li>If you want more fonts or values, you can add them using the same format</li>
+      </ul>
+      <p>Watch Closely the following link you will find all these operators:</p>
+      <code>
+<pre>
+<span class="output">HTML</span>
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&lt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitcount+Prop+Single:wght@100..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sekuya&display=swap" rel="stylesheet"&gt;
+
+<span class="output">CSS</span>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitcount+Prop+Single:wght@100..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sekuya&display=swap');
+</pre>
+</code>
+
+      <h2>System Font Stack</h2>
+      <p>
+        Another way to apply fonts is by using the system font stack. With a system font stack, we tell the browser to
+        use the default fonts of the user’s operating system and device.
+      </p>
+      <p>
+        This approach has several benefits.
+        <br>
+        The first and biggest benefit is performance. Since the browser does not need to download any external font
+        files, the website loads faster. This also means users will not experience issues like FOUC (Flash of Unstyled
+        Content), FOIT (Flash of Invisible Text), or layout shifting caused by font loading.
+      </p>
+      <p>
+        Another benefit is familiarity. The website feels more natural and comfortable to users because it uses the same
+        fonts they already see on their own system. Overall, this results in a better user experience.
+      </p>
+      <p>
+        However, there is one important thing to understand: each operating system uses a different default font.
+      </p>
+      <p>
+        For example:
+      </p>
+      <ul>
+        <li>Recent versions of macOS use a different system font than older versions</li>
+        <li>Windows has its own default system font</li>
+        <li>Android devices use a different system font as well</li>
+      </ul>
+      <p>
+        You don’t need to memorize all these fonts, but you should know that different operating systems have different
+        system fonts. Because of this, using a system font stack means your website may look slightly different from one
+        computer or device to another.
+      </p>
+      <p>
+        In the past, web-safe fonts were commonly used, but they often looked outdated and boring. System UI fonts, on
+        the other hand, are modern, clean, and visually appealing.
+      </p>
+      <p>
+        To use the system font stack, simply use the font-family property. You can press Ctrl + Space (or your editor’s
+        suggestion shortcut) and select system-ui, or you can manually type:
+      </p>
+      <code>
+<pre>
+body{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+</pre>
+</code>
+      <p>This is a simple and powerful way to improve both performance and user experience.</p>
+
+      <h2>Sizing Fonts</h2>
+      <p>
+        We already know that we can change text size using the font-size property. Font sizes can be defined using
+        absolute units like px or relative units like rem.
+      </p>
+      <h4>Avoid px</h4>
+      <p>
+        We should avoid using px because pixels are not consistent across different devices. For example, Apple devices
+        use high-density screens where pixels can be scaled to appear smaller and sharper. This technology is known as
+        Retina Display.
+      </p>
+
+      <p>As a result, text defined in pixels may appear smaller on some devices (such as Windows screens) and larger on
+        others, which creates inconsistency. To solve this problem, we should always prefer relative units like rem,
+        which we have already covered in previous lectures.</p>
+
+      <h4>Type Scale</h4>
+      <p>There is also a tool called <a href="https://typescale.com/" target="_blank">Type-Scale</a> that helps you
+        choose appropriate font sizes for headings and text. On
+        the left side, you can adjust the settings to match your project’s requirements. This tool is very useful for
+        getting the correct and visually balanced sizes for your headings and typography.</p>
+
+      <h2>Vertical Spacing</h2>
+      <p>
+        We have covered everything we need to know about fonts. Now, let’s learn about text properties.
+      </p>
+      <p>
+        Here are two important properties used to control vertical spacing: margin and line-height.
+      </p>
+      <h4>Law of Proximity</h4>
+      <p>
+        If we insert a heading and a paragraph multiple times with the same spacing, it can break a design rule called
+        the Law of Proximity. The Law of Proximity states that objects placed closer together are perceived as related.
+        This principle explains how humans visually understand relationships between different elements.
+      </p>
+      <p>
+        If elements are close to each other, they are perceived as belonging together. In our case, the heading has the
+        same margin above and below, which makes it unclear whether the heading belongs to the content above or below
+        it.
+      </p>
+      <p>
+        This is where we apply the Law of Proximity correctly. We should increase the top margin of the heading to
+        separate it from the previous paragraph and reduce the bottom margin to bring it closer to its related content.
+        This creates a clear visual relationship between the heading and the paragraph that follows.
+      </p>
+      <code>
+<pre>
+h1{
+      margin: 3rem 0 1rem;
+}
+</pre>
+</code>
+      <p>
+        The top margin should usually be greater than the bottom margin to create better visual spacing.
+      </p>
+      <h4>Line Height</h4>
+      <p>
+        line-height is used to define the height of each line of text. It controls the vertical space between lines,
+        allowing us to bring lines closer together or move them farther apart.
+      </p>
+      <p>A common typographic rule is to set the line height to one and a half times the font size. For example, if the
+        font size is 1rem, the line height would be 1.5rem.</p>
+      <p>You can use different values depending on what looks best on your webpage, so make sure to experiment with
+        different numbers to achieve optimal readability.</p>
+      <code>
+<pre>
+body{
+      font-size: 1rem; 
+      line-height: 1.5rem;
+}
+</pre>
+</code>
+      <h4>Problem with Line-Height</h4>
+      <p>
+        There is a problem with this approach: if we increase the font size in the future, the line-height will not
+        scale with it and will no longer look the same.
+      </p>
+      <p>We can solve this by removing the unit from the line-height value. For example, instead of using 1.5rem, we use
+        1.5.</p>
+      <p>A unitless line-height works as a multiplier, meaning it will always be 1.5 times the font size, no matter what
+        the font size is. This keeps the spacing consistent and responsive.</p>
+      <code>
+<pre>
+body{
+      font-size: 3rem; 
+      line-height: 1.5;
+}
+</pre>
+</code>
+
+      <h2>Horizontal Spacing</h2>
+      <p>
+        There are three properties used for horizontal spacing in CSS: <br>
+        letter-spacing, word-spacing, and width.
+      </p>
+      <p>letter-spacing is used to control the space between letters in text. <br>
+        With letter-spacing, we usually use pixel values such as 1px, 2px, etc. <br>
+        We can also use negative values, but this depends on the font being used and how you want the text to appear
+        visually.</p>
+      <p>word-spacing is used to control the space between words in a sentence.</p>
+      <code>
+<pre>
+h1{
+      letter-spacing: -1px;
+}
+
+p{
+      word-spacing: 4px;
+}
+</pre>
+</code>
+      <h4>Ideal Line length</h4>
+      <p>
+        How many characters should a line contain for comfortable reading?
+      </p>
+      <p><strong>Research shows</strong> that the ideal line length is between 50 and 70 characters per line. When a
+        line exceeds 70
+        characters, reading becomes more difficult because the reader’s eyes have to travel too far from left to right
+        and then find the start of the next line again. This breaks reading flow and causes fatigue.</p>
+      <p>On the other hand, if a line contains too few characters (for example, one or two words per line), the text
+        becomes excessively tall, forcing the reader to scroll too much and making the content feel overwhelming.</p>
+      <p>
+        That’s why maintaining a balanced line width is important. A width of 50–70 characters keeps the text readable,
+        scannable, and visually comfortable.
+      </p>
+      <p>To control line length in CSS, we often use the ch unit. The ch unit is relative to the width of the “0” (zero)
+        character in the current font. <br>
+        For example, 50ch means the width of 50 zero characters.</p>
+      <p>Keep in mind that not all characters have the same width. Characters like i or 1 are narrower, while others
+        take more space. Because of this, 50ch usually results in about 50–60 readable characters, which fits well
+        within the ideal line-length range.</p>
+      <code>
+<pre>
+p{
+      width: 50ch;
+}
+</pre>
+</code>
+
+      <h2>Formatting Text</h2>
+      <p>
+        There are many CSS properties used to format text, such as text-align, text-indent, text-decoration,
+        text-transform, white-space, column-*, and direction (used for right-to-left languages like Arabic and Pashto).
+        <br>
+        There are many more text-formatting properties available, and you can explore them as needed. <br>However, these
+        are
+        the essential properties that every front-end developer must know.
+      </p>
+      <code>
+<pre>
+h1{
+      text-align: left;
+      text-align: center;
+      text-align: right;
+}
+
+p{
+      <span class="t-r">Not recommended, makes your text hard to read by dividing the remaining space between words</span>
+      text-align: justify;
+}
+</pre>
+</code>
+      <p>
+        we don't want to indent the first paragrpah right after the heading, but after the first paragraph we want
+        indentation for that we can use the relational selector.
+      </p>
+      <code>
+<pre>
+p + p{
+      text-indent: 2rem;
+}
+</pre>
+</code>
+      <h4>Text Decoration</h4>
+      <p>
+        Text decoration includes multiple properties such as line, thickness, and color. These can be written using a
+        shorthand property, or you can define each property separately.
+      </p>
+      <code>
+<pre>
+p{
+      text-decoration: underline;
+      text-decoration: 3px line-through red;
+}
+</pre>
+</code>
+      <h4>Change Case</h4>
+      <p>
+        To change text case there is used text-transform property.
+      </p>
+      <code>
+<pre>
+p{
+      text-transform: lowercase;
+      text-transform: uppercase;
+      text-transform: capitalize;
+
+      <span class="t-r">Used with Capitalized Case for headings</span>
+      text-variant: small-caps;
+}
+</pre>
+</code>
+      <h4>Text Wrapping</h4>
+      <p>
+        To control the text wrapping there is used white-space property.
+      </p>
+      <code>
+<pre>
+p{
+      white-space: nowrap;
+}
+</pre>
+</code>
+      <h4>text-overflow</h4>
+      <p>
+        If you want to hide overflowing text, you can use overflow: hidden. <br>
+        However, if you want the text to continue but be shortened visually, you can truncate it. <br>
+        For this, we combine overflow: hidden with text-overflow: ellipsis. <br>
+        This displays dots (...) at the end of the first line to indicate that the text has been cut off. <br>
+        Keep in mind that the width of the element must be fixed (or constrained) for text truncation to work properly.
+      </p>
+      <code>
+<pre>
+p{
+      width: 50ch; 
+      white-space: nowrap;
+      overflow: hidden; 
+      text-overflow: ellipsis;
+}
+</pre>
+</code>
+      <h4>Text Columns</h4>
+      <p>
+        To divide your text in multiple columns we gonna use column property.
+      </p>
+      <code>
+<pre>
+p{
+      <span class="t-r">Create Columns</span>
+      column-count: 2;
+      column-gap: 1rem;
+
+      <span class="t-r">Line Between Columns</span>
+      column-rule: 3px dotted red;
+}
+</pre>
+</code>
+      <p>
+        <a href="https://www.w3schools.com/css/css3_multiple_columns.asp" target="_blank">Read More</a> about text
+        columns.
+      </p>
+      <h4>Text Direction</h4>
+      <p>
+        if we want to create arabic, pashto type websites we need to change the content direction from left to right to
+        right to left.
+      </p>
+      <code>
+<pre>
+body{
+        direction: rtl;
+}
+
+<span class="output">Writing Mode</span>
+p.test1 {
+        writing-mode: horizontal-tb; 
+}
+
+<span class="t-r">Inside paragraph</span>
+span {
+        writing-mode: vertical-rl; 
+}
+
+p.test2 {
+        writing-mode: vertical-rl; 
+}
+
+<span class="output">Text Outline</span>
+h1{
+        -webkit-text-stroke: 1px red;
+        color: transparent;
+}
+</pre>
+</code>
+
+      <h2>Home Work</h2>
+      <ul>
+        <li><a href="text_HW1.png">Blog Page</a></li>
+        <li><a href="https://unsplash.com/photos/C1Q3qOTlegg">Use this image</a></li>
+      </ul>
+      <p>Ensure everything looks good on smaller screens.</p>
+
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

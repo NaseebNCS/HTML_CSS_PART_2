@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords" content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main class="container two-column">
+    <section>
+
+      <div class="h-1">FLOATING ELEMENTS</div>
+      <p>
+        Floating is another method for creating layouts or positioning elements in CSS. Let’s create a tweet-style
+        layout using the article element, which is ideal for self-contained content. First, create an article element
+        with a class of tweet. Inside this article, add a div with the class avatar, which will represent the image
+        area. After the avatar div, add a p element with some dummy text. Now, let’s move on to styling the article and
+        its child elements.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Styling Div</span>
+.avatar {
+      width: 5rem; 
+      height: 5rem; 
+      background: gold; 
+}
+</pre>
+</code>
+      <p>
+        As we know, a paragraph is a block-level element, so it naturally appears on the next line. To place it to the
+        right of the avatar box, we can use the float property. By setting float: left on the avatar, it will move to
+        the left side of its container. As a result, all subsequent elements including the paragraph will flow around
+        it. The avatar will stay on the left, and the paragraph will wrap and appear to its right.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Div With Float Left</span>
+.avatar {
+      width: 5rem; 
+      height: 5rem; 
+      background: gold; 
+      float: left; 
+}
+</pre>
+</code>
+      <p>
+        Add another paragraph inside the article and you will see that the content flows around the avatar box. This
+        demonstrates how the float property works. We can also use the margin property to create space between the
+        avatar and the paragraph.
+      </p>
+      <code>
+<pre>
+.avatar {
+      width: 5rem; 
+      height: 5rem; 
+      background: gold; 
+      float: left; 
+      margin-right: 0.5rem; 
+}
+</pre>
+</code>
+      <p>
+        We can also position the avatar or any element to the right side of its container by using float: right;. When
+        we apply this property, the avatar box will move to the right within its container.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Div With Float Right</span>
+.avatar {
+      width: 5rem; 
+      height: 5rem; 
+      background: gold; 
+      margin-right: 0.5rem; 
+      float: right; 
+}
+</pre>
+</code>
+      <p>
+        Now let’s float the element to the left again. Sometimes, we don’t want the next element to wrap around a
+        floating element. For example, you may have icons for replying, liking, or retweeting a tweet, and all of those
+        icons need to appear below the tweet box.
+      </p>
+      <p>
+        In our case, we have a second paragraph that we want to push below the avatar. This is where the clear property
+        comes in.
+      </p>
+      <p>
+        We’ll create a class named clear and apply it to the second paragraph. Then we’ll use the clear property inside
+        that class. The clear property accepts three values: left, right, and both.
+      </p>
+      <ul>
+        <li>Use left if the floating element is on the left.</li>
+        <li>Use right if the floating element is on the right.</li>
+        <li>Use both if you don’t want to worry about the floating direction.</li>
+      </ul>
+      <p>This ensures the next element starts below the floating element instead of wrapping around it.</p>
+      <code>
+<pre>
+<span class="t-r">Second Paragraph with Clear both</span>
+.clear{
+      clear: both; 
+}
+</pre>
+</code>
+      <p>
+        It clears the floating boxes or elements from both sides of the paragraph element.
+        There is a common issue with the float property called parent collapsing. This happens because the parent
+        element does not recognize or “see” its floating children.
+      </p>
+      <p>
+        For example, if we apply borders to the main container (the tweet element in this case) and then remove the
+        second paragraph, you will notice that the parent element with the class tweet collapses. It only expands
+        according to the non-floating paragraph element. It does not account for the avatar element because the avatar
+        is floated.
+      </p>
+      <p>
+        By default, parent elements do not acknowledge floated children floated elements become “invisible” to their
+        parent for height calculation. If you remove the first paragraph, you will see that the parent container
+        collapses again, and the avatar appears outside the box because the parent is not recognizing the floated
+        element.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Article Element</span>
+.tweet {
+      border: 3px solid lightgrey;
+}
+</pre>
+</code>
+      <h3>How do we solve the parent collapsing problem?</h3>
+      <p>
+        There are several solutions. Let’s start with the first one: you can create an empty div at the end of the
+        container to clear the float. By adding a div with a class like .clear at the bottom, the float will be cleared
+        and the collapsing issue will be fixed.
+      </p>
+      <p>
+        However, this approach has a drawback the extra div is not meaningful for search engines or screen readers. It
+        exists only to fix a layout issue, which makes the HTML markup less semantic. This lack of semantic structure
+        can be considered a disadvantage of this method.
+      </p>
+      <p>
+        Another, more modern solution is to use the ::before and ::after pseudo-elements. With these pseudo-elements, we
+        can insert generated content before or after the element to clear floats without affecting the semantic
+        structure of the HTML.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Article Element After</span>
+.tweet::after{
+      content: '';
+      display: block; 
+      clear: both;
+}
+</pre>
+</code>
+      <p>
+        Using the tweet::after selector, we are clearing floats dynamically without adding any non-semantic elements to
+        our HTML. This gives us the same result as before.
+      </p>
+      <p>
+        However, what if we need to use this technique elsewhere on the page, outside of the .tweet element? For
+        example, suppose we have an element for displaying an advertisement, such as an element with the class .ad. To
+        fix its float issue, we would have to repeat the same tweet::after code again. Repeating code is considered bad
+        practice.
+      </p>
+      <p>
+        A better approach is to create a reusable utility class with a general name such as .clear or .clearfix. Some
+        developers use abbreviations like .cf, but it’s better to avoid abbreviations because they can make the code
+        harder to read and understand.
+      </p>
+      <p>
+        Once the utility class is created, we can simply add it as a second class to any element such as adding clearfix
+        to the article element to apply the float-clearing behavior without duplicating code.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Entity Class for Any Element</span>
+.clearfix::after{
+      content: '';
+      display: block; 
+      clear: both;
+}
+</pre>
+</code>
+      <p>
+        There is a third way to fix this problem by using the overflow property. First, remove the clearfix class from
+        .tweet, and then apply an overflow value to the .tweet element any value except visible. <br>
+        You can set it to auto, but the issue with auto is that, depending on the content, it may introduce scrollbars.
+        Alternatively, you can use hidden, but this may clip the content in certain cases.
+      </p>
+      <p>
+        While using overflow does work, it is not the best or most recommended solution. It’s considered more of a hack
+        a quick fix, but not a clean or ideal one.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Article Element</span>
+.tweet {
+      border: 3px solid lightgrey;
+      overflow: hidden;
+}
+</pre>
+</code>
+      <p>
+        Creating a layout using floats is more difficult because issues like parent collapsing can cause unexpected
+        problems. In modern web development, we no longer use float-based properties for building layouts.
+        <strong>However</strong>, many older websites were built using floats, and you may still encounter them when
+        maintaining legacy code. Nowadays, developers primarily use CSS Grid and Flexbox to create responsive and
+        well-structured layouts.
+      </p>
+
+      <h2>Free Resource</h2>
+      <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Test_your_skills/Floats"
+        target="_blank">More
+        About Float/Clear</a>
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

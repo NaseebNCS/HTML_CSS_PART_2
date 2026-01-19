@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords"
+    content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio, HTML CSS PART 2, HTML CSS PART 1, HTML CSS Course, Animations, GSAP, HTML COURSE, CSS COURSE, WEB DEV FUNDAMENTALS" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <!-- main section -->
+  <main class="container two-column">
+    <section>
+      <div class="h-1">FORM</div>
+      <p>
+        Welcome to another section of HTML CSS Part 2! In this section, we will learn everything you need to know about
+        forms including how to build them, style them, and work with different input types such as text fields, dropdown
+        lists, checkboxes, radio buttons, sliders, file inputs, and hidden fields. We will also cover data validation
+        and form submission. Let's start this exciting journey!
+      </p>
+
+      <h2>Creating a Basic Form</h2>
+      <p>
+        Let's see how to create a basic form. Start with the &lt;form> element and give it an action attribute. The
+        action attribute specifies where the form data will be sent when submitted. A form usually contains one or more
+        fields, also called form controls. Each input field has a type attribute, which defines the kind of input. For
+        example, type="text" creates a single-line text input. Now let's create a simple input field with a label.
+      </p>
+      <code>
+<pre>
+&lt;form action="">
+  &lt;p>Name&lt;/p>
+  &lt;input type="text">
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Lable</h2>
+      <p>
+        If we use a &lt;p> element for the label, it can cause some problems. The first problem is that it creates extra
+        space
+        between the text and the input field, making them look disconnected. We could fix this with CSS, but there is a
+        better
+        solution: use the &lt;label> element.
+      </p>
+      <p>
+        The &lt;label> element allows you to type the label text and connect it to a specific input field. Each
+        &lt;label> has
+        a for attribute, which should match the id of the input field. This way, when you click the label text, the
+        corresponding input field is focused. Using &lt;label> makes your form more accessible and user-friendly.
+      </p>
+      <code>
+<pre>
+&lt;form>
+  &lt;lable for="name">Name&lt;/lable>
+  &lt;input id="name" type="text">
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Email</h2>
+      <p>
+        If you change the input type to something like email, the browser will provide basic validation. For example, if
+        the user enters an email without the @ symbol, an error will be shown automatically.
+      </p>
+      <code>
+<pre>
+&lt;form>
+  &lt;label for="email">Email&lt;/label>
+  &lt;input id="email" type="email">
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Button</h2>
+      <p>
+        The &lt;button> element is used to create buttons for submitting or resetting a form. You can set the button's
+        behavior using the type attribute. You can also use the &lt;input> element with type="submit" or type="reset" to
+        achieve the same functionality.
+      </p>
+      <code>
+<pre>
+&lt;form>
+
+    &lt;label for="name"> Name &lt;/label>
+    &lt;input id="name" type="text">
+    &lt;label for="email"> Email &lt;/label>
+    &lt;input id="email" type="email">
+    &lt;button type="submit"> Register &lt;/button>
+    &lt;button type="reset"> Clear &lt;/button>
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Styling Form</h2>
+      <p>
+        Now let's style the same form with basic css styling properties.
+      </p>
+      <code>
+<pre>
+<span class="output">HTML</span>
+&lt;form class="registration-form">
+
+    &lt;div class="form-group">
+      &lt;label for="name">Name&lt;/label>
+      &lt;input id="name" type="text" class="input-field">
+    &lt;/div>
+
+    &lt;div class="form-group">
+      &lt;label for="email">Email&lt;/label>
+      &lt;input id="email" type="email" class="input-field">
+    &lt;/div>
+
+    &lt;button type="submit" class="btn">Register&lt;/button>
+    &lt;button type="reset" class="btn">Clear&lt;/button>
+
+&lt;/form>
+
+<span class="output">CSS</span>
+<span class="t-r">General body styling</span> 
+body {
+        font-family: -apple-system, "Open Sans", Ubuntu, sans-serif;
+        line-height: 1.5;
+        padding: 1rem; 
+}
+
+<span class="t-r">Ensure all labels are displayed as block elements</span>
+label {
+        display: block;
+        margin-bottom: 0.3rem;
+}
+
+<span class="t-r">Style text and email input fields only</span> 
+.input-field {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0.5rem 0.7rem;
+        width: 100%;  <span class="t-r">optional: makes inputs full width</span> 
+}
+
+<span class="t-r">Focus effect for input fields </span>
+.input-field:focus {
+        border-color: red;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.25);
+   
+        <span class="t-r">Smooth transition for border and shadow</span>
+        transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+<span class="t-r">Style all buttons </span>
+.btn {
+        background: red; 
+        color: #fff; 
+        border: none;
+        padding: 0.5rem 0.7rem; 
+        border-radius: 5px;
+        cursor: pointer;
+}
+
+<span class="t-r"> Space between form groups </span>
+.form-group {
+        margin-bottom: 1rem;
+}
+
+<span class="t-r">Extra note: Using class selectors (like .input-field) 
+   ensures other inputs (checkboxes, radio buttons) remain unstyled. </span>
+</pre>
+</code>
+      <p>
+        This is how we style forms. As we move forward in this section, we will have several input fields. Defining
+        styles for each input field can be time-consuming, which is why many developers use CSS frameworks.
+      </p>
+
+      <h2>CSS Frameworks</h2>
+      <p>
+        As we have seen, styling a form can be a bit time-consuming. This is where CSS frameworks come in handy. A
+        framework is essentially a library of pre-written CSS code that helps us build more beautiful and consistent
+        websites quickly.
+      </p>
+      <p>
+        There are many frameworks available, such as Bootstrap, Foundation, Semantic UI, UIkit, Materialize, Milligram,
+        and TailwindCSS, and new ones keep coming out all the time. We don’t need to know all of them no developer knows
+        every framework.
+      </p>
+      <a href="download_tailwind.pdf">Tailwind CSS</a>
+      <p>
+        Currently, Bootstrap and TailwindCSS are very popular. One thing to keep in mind is that using a framework often
+        includes downloading a lot of extra code we might not need. That’s why some developers prefer writing custom
+        CSS, so they only include the code necessary for their project.
+      </p>
+      <p>
+        Which approach to use depends on the problem we are solving and sometimes on the company we work for, as they
+        may have already chosen a specific framework for their projects.
+      </p>
+
+      <h4>Bootstrap</h4>
+      <p>
+        Visit the official Bootstrap website at getbootstrap.com. There are two ways to use Bootstrap in your project:
+      </p>
+      <ol>
+        <li>Download it and add it to your project files.</li>
+        <li>
+          Use the CDN link (Content Delivery Network) to include it directly in your HTML.
+        </li>
+      </ol>
+      <p>
+        A CDN is a network of servers around the world that delivers web content like images, CSS, and JavaScript files
+        quickly and efficiently.
+      </p>
+      <p>
+        To use Bootstrap via CDN:
+      </p>
+      <ul>
+        <li>Search for the Bootstrap CDN link.</li>
+        <li>Copy the link and paste it inside the &lt;head> section of your HTML document.</li>
+      </ul>
+      <p>
+        Once you include the CDN, you can style your form using only Bootstrap classes. The CDN automatically applies
+        styles based on the classes you use.
+      </p>
+      <p>
+        Now, let's create a basic HTML form using Bootstrap via CDN, with CSS styling explained.
+      </p>
+      <code>
+<pre>
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>Bootstrap Form Example&lt;/title>
+     
+    <span class="t-r">Bootstrap CDN</span>
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    &lt;style>
+      <span class="t-r">Custom styles</span>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .custom-form {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+    &lt;/style>
+&lt;/head>
+&lt;body>
+    &lt;form class="custom-form">
+        &lt;h3 class="text-center mb-4">Sign Up&lt;/h3>
+        
+        <span class="t-r">Name input</span>
+        &lt;div class="mb-3">
+            &lt;label for="name" class="form-label">Full Name&lt;/label>
+            &lt;input type="text" class="form-control" id="name" placeholder="Enter your full name">
+        &lt;/div>
+
+        <span class="t-r">Email input </span>
+        &lt;div class="mb-3">
+            &lt;label for="email" class="form-label">Email address&lt;/label>
+            &lt;input type="email" class="form-control" id="email" placeholder="Enter your email">
+        &lt;/div>
+
+        <span class="t-r">Password input</span>
+        &lt;div class="mb-3">
+            &lt;label for="password" class="form-label">Password&lt;/label>
+            &lt;input type="password" class="form-control" id="password" placeholder="Enter your password">
+        &lt;/div>
+
+        <span class="t-r">Submit button</span>
+        &lt;div class="d-grid">
+            &lt;button type="submit" class="btn btn-primary">Sign Up&lt;/button>
+        &lt;/div>
+    &lt;/form>
+
+    <span class="t-r">Bootstrap JS Bundle (optional for components like dropdowns)</span>
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">&lt;/script>
+&lt;/body>
+&lt;/html>
+</pre>
+</code>
+      <h4>Explanation of Bootstrap Classes:</h4>
+      <ul>
+        <li>form-control👉 Styles inputs with padding, borders, and rounded corners.</li>
+        <li>form-label👉 Styles labels for inputs.</li>
+        <li>mb-3👉 Adds margin-bottom to space out form elements.</li>
+        <li>btn btn-primary👉 Creates a primary styled button.</li>
+        <li>d-grid👉 Makes the button take full width.</li>
+        <li>text-center👉 Centers the heading text.</li>
+      </ul>
+      <h4>Bootstrap Documentations</h4>
+      <p>
+        Read the Bootstrap documentation to learn more about Bootstrap utility classes. There is a lot of information
+        there, including examples of how to use different components. Bootstrap is a very comprehensive library, but
+        that comes at a cost.
+      </p>
+      <p>
+        If you go to the page where you used Bootstrap, open the Network tab in the browser's Inspect tool, refresh the
+        page, and filter for CSS files, you will see the Bootstrap files loaded from the CDN. If the file size is around
+        20 KB, it is quite small and usually not a problem.
+      </p>
+      <p>
+        However, many websites include lots of images, CSS libraries, and JS libraries, and if you combine all of them,
+        the total size can exceed hundreds of KBs. On a slow internet connection, this can lead to a poor user
+        experience. For most websites, waiting a second or two is acceptable, but for large e-commerce sites like
+        Amazon, even a one-second delay can reduce sales by around 20%.
+      </p>
+      <h4>Milligram</h4>
+      <p>
+        If you don’t need most of the Bootstrap components, you can use a minimalist framework called Milligram. Go to
+        <a href="https://milligram.io/" target="_blank">milligram.io</a>
+        , click Get Started, and copy the Milligram CSS link just like you would for Bootstrap. <br> Once you include
+        Milligram in your HTML, it will automatically style elements like forms without the need to learn many classes
+        or read extensive documentation.
+      </p>
+      <p>The main advantages of Milligram are:</p>
+      <ul>
+        <li>It is 10 times smaller than Bootstrap.</li>
+        <li>It automatically styles elements like form input fields.</li>
+        <li>It is simple and lightweight, perfect for small projects or when you don’t need all of Bootstrap’s features.
+        </li>
+      </ul>
+      <p>
+        By using Milligram, your forms and basic elements will look beautiful without extra effort.
+      </p>
+      <code>
+<pre>
+<span class="t-r">In head of HTML</span>
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+<span class="t-r">No classes but still form looks good</span>
+&lt;form>
+  &lt;div>
+    &lt;label for="name">Name&lt;/label>
+    &lt;input id="name" type="text">
+  &lt;/div>
+  &lt;div>
+    &lt;label for="email">Email&lt;/label>
+    &lt;input id="email" type="email">
+  &lt;/div>
+  &lt;button type="submit">Register&lt;/button>
+  &lt;button type="reset">Clear&lt;/button>
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Input Basic Fields</h2>
+      <p>
+        Let's learn about other input fields in HTML and how we can style them using custom CSS, like controlling the
+        width, padding, and more. There are many types of input fields, and changing the type attribute changes how the
+        input behaves.
+      </p>
+      <ul>
+        <li><strong>Text input:</strong> If type="text", the input accepts text.</li>
+        <li><strong>Number input:</strong> If type="number", it accepts only numbers. On desktops, users can use the
+          up/down arrows, and
+          on phones, the numeric keyboard pops up for easier input.</li>
+      </ul>
+      <p>
+        Always test input types in your browser to see how they behave.
+      </p>
+      <ul>
+        <li><strong>Textarea:</strong> Used for multi-line text input. You can type directly inside it, and the area can
+          be resized by
+          default. To prevent resizing, use CSS: resize: none;.</li>
+        <li><strong>Value attribute:</strong> Pre-fills the input field with default text.</li>
+        <li><strong>Placeholder attribute:</strong> Shows a label or hint inside the input field. It disappears when the
+          user starts
+          typing.</li>
+        <li><strong>Disabled and readonly attributes:</strong> Prevent the user from editing the input or sending its
+          value to the
+          server.</li>
+        <li>
+          <strong>Maxlength attribute:</strong> Limits the number of characters the user can enter.
+        </li>
+        <li>
+          <strong>Autofocus attribute:</strong> Automatically focuses on the input field when the page loads, which is
+          useful in login
+          forms so users don’t have to click the field manually.
+        </li>
+        <li><strong>Other input types:</strong> Press Ctrl + Space in the type attribute in your code editor to see all
+          available input
+          types.</li>
+      </ul>
+      <p>
+        <strong>Note on buttons:</strong> Creating a button using &lt;input type="button"> only allows text. If you want
+        a button with an icon or more customization, use the &lt;button> element instead.
+      </p>
+      <code>
+<pre>
+<span class="output">HTML</span>
+&lt;form>
+
+    &lt;input type="text" autofocus>
+    &lt;input type="text">
+    &lt;textarea cols="10" rows="3">Feedback...&lt;/textarea>
+    &lt;input type="number">
+    &lt;input type="email">
+    &lt;input type="email" maxlength="6">
+    &lt;input type="password" placeholder="********">
+    &lt;input type="date">
+    &lt;input type="time">
+    &lt;input type="submit" value="REGISTER">
+    &lt;input type="reset">
+    &lt;input type="color">
+
+&lt;/form>
+
+<span class="output">CSS</span>
+form{
+        width: 50%;
+        padding: 1rem;
+}
+
+textarea{
+        resize: none;
+}
+</pre>
+</code>
+
+      <h2>Data List</h2>
+      <p>
+        If you want to show suggestions as a user types in an input field, you can use the datalist element with option
+        elements. To connect the input field to the datalist, give the datalist a unique id and set the input’s list
+        attribute to that id.
+      </p>
+      <p>
+        For example, if you link a database to the form, you may want to send a numeric value to the server instead of
+        the displayed text. For instance, a database of countries might assign a unique identifier to each country. When
+        the form is submitted, you can send this unique identifier to confirm which country the user selected. You can
+        achieve this by using the value attribute for the options to send the identifier, and optionally using data-
+        attributes to store additional information that is not shown to the user. JavaScript can then read these custom
+        attributes and send them to the server.
+      </p>
+      <p>
+        If you want to disable the browser’s default autocomplete suggestions (for example, if the user has already
+        typed something and you don’t want extra tooltips), set the input’s autocomplete attribute to off.
+      </p>
+      <p>
+        Note that every browser has its own default styling for datalists and options, and you cannot fully style them
+        with CSS alone. To create a fully custom-styled suggestions list, you would need to use JavaScript, which is
+        beyond the scope of this HTML course.
+      </p>
+      <code>
+<pre>
+&lt;form>
+      <span class="t-r">Disable Suggestions or Extra Toolkits provided by Browsers Using Autocomplete</span>
+      &lt;input type="text" list="countries" autocomplete="off">
+      &lt;datalist id="countries">
+
+          <span class="t-r">Data-Value is a custom attribute</span>
+          &lt;option data-value="1">UAE&lt;/option>
+          &lt;option data-value="2">India&lt;/option>
+          &lt;option data-value="3">China&lt;/option>
+          &lt;option data-value="4">Pakistan&lt;/option>
+          &lt;option data-value="5">Afghanistan&lt;/option>
+
+      &lt;/datalist>
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Check Boxes</h2>
+      <p>
+        Now, let’s learn how to display checkboxes. Use the &lt;input> element, and you’ll see different types of
+        inputs,
+        including checkboxes. Each checkbox is usually associated with a &lt;label> for better accessibility. If you are
+        still using Milligram, don’t forget to check their documentation for details.
+      </p>
+      <p>
+        To make a checkbox selected by default, use the checked attribute. This attribute is boolean, which means it can
+        either be present (checked) or absent (not checked). You can also use the disabled attribute to make a checkbox
+        unclickable.
+      </p>
+      <code>
+<pre>
+&lt;form>
+    
+    &lt;input type="checkbox" id="front-end" checked>  
+    &lt;label for="front-end">Front-End&lt;/label>
+
+    &lt;input type="checkbox" id="back-end">  
+    &lt;label for="back-end">Back-End&lt;/label>
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Radio Buttons</h2>
+      <p>
+        Checkboxes allow users to select multiple items. But sometimes, we want the user to select only one option. In
+        such cases, we can use a dropdown list or radio buttons. For radio buttons, the name attribute is used to group
+        multiple buttons so that the user can select only one option from the group. Similar to checkboxes, you can make
+        one radio button selected by default using the checked attribute.
+      </p>
+      <code>
+<pre>
+&lt;form>
+      &lt;input type="radio" name="membership" id="silver">
+      &lt;label for="silver">Silver&lt;/label>
+
+      &lt;input type="radio" name="membership" id="gold">
+      &lt;label for="gold">Gold&lt;/label>
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Dorp-Down Lists</h2>
+      <p>
+        To create a dropdown list in HTML, we use the &lt;select> element. Inside it, we add &lt;option> elements for
+        each
+        choice. To make an option selected by default, use the selected attribute with the
+        &lt;option> element. To allow users to select multiple options, add the multiple attribute to the &lt;select>
+        element. If there are many options, you can group them using &lt;optgroup>. Each group should have a label to
+        describe the type of options inside.
+      </p>
+      <code>
+<pre>
+&lt;form>
+      <span class="output">First List</span>
+      &lt;select>
+        <span class="t-r">Some Developers leave the first option empty or show suggestions like select the course.</span>
+        &lt;option value="">&lt;/option>
+        &lt;option value="1">HTML&lt;/option>
+        &lt;option value="2">CSS&lt;/option>
+        &lt;option value="3">JavaScript&lt;/option>
+      &lt;/select>
+
+      <span class="output">Second List</span>
+      &lt;select>
+
+        &lt;optgroup label="Front-End Courses">
+
+          &lt;option value="1">HTML&lt;/option>
+          &lt;option value="2">CSS&lt;/option>
+          &lt;option value="3">JS&lt;/option>
+
+        &lt;/optgroup>
+
+        &lt;optgroup label="Back-End Courses">
+
+          &lt;option value="1" selected>Node.js&lt;/option>
+          &lt;option value="2">ASP.NET&lt;/option>
+          &lt;option value="3">Django&lt;/option>
+
+        &lt;/optgroup>
+        
+      &lt;/select>
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Sliders</h2>
+      <p>
+        Sometimes, we allow users to select numeric values using a slider. Sliders often require JavaScript to show the
+        changing value in real-time. We’ll see how to create one later.
+      </p>
+      <code>
+<pre>
+&lt;form>
+
+      <span class="t-r">Minimum value is 0 max selection is 100 the default one is 90</span>
+      &lt;input type="range" min="0" max="100" value="90">
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>File Inputs</h2>
+      <p>
+        On web pages, buttons like “Select Documents” or “Upload CV” are created using &lt;input type="file">. To allow
+        multiple file selection, add the multiple attribute. You can also use the accept attribute to restrict the file
+        types, for example, accept=".jpg" will allow only JPG files to be selected.
+      </p>
+      <code>
+<pre>
+&lt;form>
+
+      &lt;input type="file">
+      &lt;input type="file" multiple>
+      &lt;input type="file" accept=".jpg">
+      &lt;input type="file" accept=".jpg, .png, .pdf">
+
+      <span class="t-r">To Allow user select Vides, Audioes Etc.</span>
+      &lt;input type="file" accept="audio/*">
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Grouping Related Fields</h2>
+      <p>
+        We have now covered almost all types of input fields. For complex forms, we can group related fields into
+        meaningful sections. This is where the
+        &lt;fieldset> element is useful. It acts as a container, and the &lt;legend> element gives that group an
+        identity or
+        title. Some developers also use &lt;section> with &lt;h2> instead of &lt;fieldset> and &lt;legend>, which is
+        also a valid
+        approach for grouping related fields.
+      </p>
+      <code>
+<pre>
+&lt;form>
+
+      <span class="t-r">1. Using Fieldset</span>
+      &lt;fieldset>
+        &lt;legend>Billing Address&lt;/legend>
+        &lt;input type="text">
+        &lt;input type="text">
+        &lt;input type="text">
+      &lt;/fieldset>
+      &lt;fieldset>
+        &lt;legend>Payment&lt;/legend>
+        &lt;input type="text">
+        &lt;input type="text">
+        &lt;input type="text">
+      &lt;/fieldset>
+
+      <span class="t-r">2. Using Section</span>
+      &lt;section>
+        &lt;h2>Billing Address&lt;/h2>
+        &lt;input type="text">
+        &lt;input type="text">
+        &lt;input type="text">
+      &lt;/section>
+      &lt;section>
+        &lt;h2>Payment&lt;/h2>
+        &lt;input type="text">
+        &lt;input type="text">
+        &lt;input type="text">
+      &lt;/section>
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Hiddent Fields</h2>
+      <p>
+        Suppose we have a form for editing a course, with fields like title, subtitle, price, etc. Sometimes, we want to
+        submit this form to the server.
+      </p>
+      <p>
+        The server needs to know which course is being submitted. To do this, each course has a unique identifier (ID),
+        usually a number like 1, 2, 3, and so on. These IDs are generated by the server.
+      </p>
+      <p>
+        When we display the form, we include this course ID so that when the user submits the form, the server knows
+        exactly which course to update. This is where hidden fields come in.
+      </p>
+      <p>
+        A hidden field is an input field that the user cannot see. Even though it is invisible, its value is sent to the
+        server when the form is submitted. For example, if the hidden field’s value is 1234, the server receives 1234
+        along with the other form data.
+      </p>
+      <p>
+        Important: Even though hidden fields are invisible, we should never store sensitive information in them. Anyone
+        can view these values in the page’s source code or using browser developer tools.
+      </p>
+      <p>
+        In short, hidden fields are used to store non-sensitive data like the course ID, so the server knows which
+        course the user is editing.
+      </p>
+      <code>
+<pre>
+&lt;form>
+
+      &lt;input type="hidden" name="course=id" value="1234">
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Data Validation</h2>
+      <p>
+        Before submitting a form, we should always make sure the data is in the correct format. For required fields, we
+        must confirm that they are filled out. If we want to collect an email, it should be a valid email address, not
+        random characters. For numbers, they should be within a valid range for example, age or price cannot be
+        negative. Dates should also be validated to ensure they are correct.
+      </p>
+      <p>
+        Validating data before submission is important to prevent data corruption and security issues. Hackers can
+        exploit invalid input by entering negative numbers, extremely long strings, or other incorrect values to break
+        the system.
+      </p>
+      <p>
+        HTML provides built-in attributes for basic data validation, such as required, min, max, type="email", etc. For
+        more complex validations, JavaScript can be used to check the data before submission.
+      </p>
+      <code>
+<pre>
+&lt;form>  
+
+      <span class="t-r">Can't Submit the form Before filling the input text field</span>
+      &lt;input type="text" required>
+
+      <span class="t-r">Minimum characters 3</span>
+      &lt;input type="text" required minlength="3">
+
+      <span class="t-r">Maximum 10 Characters Supported</span>
+      &lt;input type="text" required minlength="3" maxlength="10">
+
+      <span class="t-r">For Numbers Min & Max is used</span>
+      <span class="t-r">if you don't want to allow negative values, by setting the min to 0 it means the negative values are not supported, it helps to protect data curroption</span>
+      &lt;input type="number" required min="0" max="10">
+      &lt;button type="submit">SUBMIT&lt;/button>
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Submitting The Form</h2>
+      <p>
+        If we want to get data from a user, for example their name, email, and contact number, we need to create a form.
+      </p>
+      <p>
+        To submit a form, we use the action attribute in the &lt;form> tag, where we provide a relative or absolute URL.
+        This URL tells the form where to send the data.
+      </p>
+      <p>
+        This is where server-side technologies come in. There are many backend technologies, for example:
+      </p>
+      <ul>
+        <li>Node.js / Express – used by JavaScript developers</li>
+        <li>Django – used by Python developers</li>
+        <li>ASP.NET – used by C# developers</li>
+        <li>Laravel – used by PHP developers</li>
+        <li>Ruby on Rails – used by Ruby developers</li>
+      </ul>
+      <p>
+        You don’t need to learn all of them; choose one based on your expertise. But for now, our focus is on frontend,
+        not backend, to keep things simple.
+      </p>
+      <p>
+        We will use a service called Formspree.io. It provides a ready-to-use backend for your forms. It’s free to use.
+        Here’s how:
+      </p>
+      <ol>
+        <li>Go to Formspree.io and create an account.</li>
+        <li>Click the “Project” button to create a project.</li>
+        <li>Inside the project, click “New Form” or “Create Form”.</li>
+        <li>Give your form a name, like Contact Form.</li>
+        <li>Click Create. Formspree will generate a backend for you automatically.</li>
+      </ol>
+      <p>
+        Next, copy the URL provided by Formspree and paste it in the action attribute of your form.
+      </p>
+      <p>Each input field in the form should have a name attribute, because it identifies the data being sent. Also, set
+        the form’s method attribute, which determines how data is sent:
+      </p>
+      <ul>
+        <li><strong>POST</strong> – sends data in the body of the HTTP request. This is the most common method. You can
+          check it in the
+          browser’s Network tab while submitting the form. You will see a request sent to the server, with the form
+          fields (like name and email) in the request body.</li>
+        <li>
+          <strong>GET</strong> – sends data by appending it to the URL. This is useful for bookmarks. For example, when
+          you search on
+          Google, the search keyword appears in the URL. You can bookmark that URL and return to it later.
+        </li>
+      </ul>
+      <code>
+<pre>
+<span class="t-r">In action past your own link</span>
+&lt;form action="https://formspree.io/f/myybnlqn" method="POST">
+
+    &lt;input type="text" placeholder="Name" required name="Name">
+    &lt;input type="email" placeholder="xyz@gmail.com" required name="Email">
+
+&lt;/form>
+</pre>
+</code>
+
+      <h2>Home Work</h2>
+      <ul>
+        <li><a href="Form_HW1.png">Create these forms</a></li>
+      </ul>
+
+
+      <!-- jump to top button -->
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+
+</html>

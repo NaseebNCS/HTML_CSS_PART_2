@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords" content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main class="container two-column">
+    <section>
+      <div class="h-1">POSITIONING ELEMENTS</div>
+      <p>
+        Going forward in this lecture, we are going to cover various
+        techniques for positioning elements. We will learn how to precisely
+        position elements.
+      </p>
+      <code>
+          <pre>
+.boxes{
+        border: 3px solid lightgrey;
+}
+
+.box{
+        width: 5rem; 
+        height: 5rem; 
+}
+
+.box-one{
+        background: gold;
+}
+
+.box-two{
+        background: red;
+}
+
+.box-three{
+        background: black;
+}
+</pre
+          >
+        </code>
+
+      <p>
+        Here, we have created a very basic layout where the .boxes container
+        holds three boxes. Each box has a separate class, such as box-one to
+        box-three, and all boxes also share the common class box. Now, if we
+        want to move these boxes from their original positions, we use a
+        concept called positioning.
+      </p>
+
+      <h2>RELATIVE</h2>
+      <code>
+          <pre>
+.boxes{
+        border: 3px solid lightgrey;
+}
+
+.box{
+        width: 5rem; 
+        height: 5rem; 
+}
+
+.box-one{
+        background: gold;
+}
+
+.box-two{
+        background: red;
+        position: static; <span class="t-r">/* Static is Default value */</span>
+}
+
+.box-three{
+        background: black;
+        position: relative; <span class="t-r">/* Relative to Its Original Position */</span>
+        left: 5rem; <span class="t-r">/* 5rem gap from left */</span>
+}
+</pre>
+        </code>
+      <p>
+        position: relative means the box or element is positioned relative to
+        its normal place. However, we can move it left, right, top, or bottom,
+        and adjust its z-index. We can also use negative values for these
+        properties. By default, each element has a z-index value of 0.
+      </p>
+      <code>
+          <pre>
+    .box-one{
+        background: gold;
+        position: relative; 
+        right: 4rem; <span class="t-r">/* same as -4 from left */</span>
+        top: 2rem; <span class="t-r">/* 2rem space from top */</span>
+}
+  </pre>
+        </code>
+
+      <p>
+        The other boxes are in their original positions as they are supposed
+        to be. They are not affected by the positioning of the sibling
+        elements.
+      </p>
+
+      <h2>Z-INDEX</h2>
+      <code>
+          <pre>
+.box-one{
+        background: gold;
+}
+
+.box-two{
+        background: red;
+        position: relative;
+        left: 4rem;
+        bottom: 4rem;
+        z-index: -1; <span class="t-r">/* send backward */</span>
+}
+
+.box-three{
+        background: black;
+}
+</pre>
+        </code>
+      <p>
+        On a web page, there are three axes: the horizontal axis (or X-axis),
+        the vertical axis (or Y-axis), and the Z-axis, which represents depth.
+        We can imagine the Z-index like light coming from the device toward
+        our eyes. By default, each element has a Z-index value of 0. If we
+        increase the value (e.g., 1, 2), the element appears closer to us. If
+        we use negative values (e.g., -1, -2), it moves farther away or behind
+        other HTML elements.
+      </p>
+
+      <h2>ABSOLUTE</h2>
+      <p>
+        With relative positioning, we can move an element relative to its
+        normal position. This will not impact other elements on the page. In
+        contrast, with absolute positioning, we can move an element relative
+        to its container or parent element.
+      </p>
+      <code>
+          <pre>
+.boxes{
+        border: 3px solid lightgrey;
+        position: relative; <span class="t-r">/* absolute position will work based on this relative position */</span>
+}
+
+.box{
+        width: 5rem; 
+        height: 5rem; 
+}
+ 
+.box-one{
+        background: gold;
+}
+
+.box-two{
+        background: red;
+        position: absolute; <span class="t-r">/* position it self according to the parent who has position relative. */</span>
+        right: 0;
+        bottom: 0;
+}
+
+.box-three{
+        background: black;
+}
+</pre>
+        </code>
+
+      <p>
+        If we want child elements to be positioned relative to their main
+        container or parent container, the parent must have position:
+        relative. This way, the child will be positioned based on its parent,
+        which has relative positioning.
+        <br /><br />
+        When we set an element’s position to absolute, it is removed from its
+        normal position in the document flow, and the next elements take its
+        place. From the parent’s point of view, the element with position:
+        absolute does not exist. We can imagine it as being on a separate
+        layer.
+      </p>
+
+      <h2>FIXED</h2>
+      <p>
+        If you want an element to remain fixed in its position, such as a
+        navigation bar or any other element, you can use the position: fixed
+        property.
+      </p>
+      <code>
+          <pre>
+.logo{
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+}
+  </pre
+          >
+        </code>
+      <p>
+        If you increase the content and have an image inside this logo
+        element, you will see that it stays fixed in its given position. We
+        can use left, right, top, bottom, and z-index with any position
+        property except the static value. You can imagine it like the message
+        icon in a WhatsApp chat app, which is fixed at the bottom-right of
+        your mobile viewport. You can scroll through chats, but the icon
+        always remains in the same position.
+      </p>
+      <p>
+        We can also use these properties to set the width and height of any
+        element by combining the left and right, or the top and bottom.
+      </p>
+      <code>
+          <pre>
+  .child-box{
+          position: fixed;
+          left: 2rem;
+          right: 2rem; 
+          background: red;
+          height: 100px;
+  }
+    </pre
+          >
+        </code>
+      <p>
+        The child box doesn't have a width property, but it takes its width
+        from the combination of the left and right properties when using
+        position: fixed.
+      </p>
+
+      <h2>STICKY</h2>
+      <p>
+        position: sticky means an element stays in its normal place, but when
+        you scroll and it reaches a certain point (like the top), it sticks
+        there.
+      </p>
+      <strong>Think of it like this:</strong>
+      <ul>
+        <li>A heading or menu is in its normal position.</li>
+        <li>You scroll down.</li>
+        <li>
+          When that element touches the top of the page, it sticks to the
+          top.
+        </li>
+        <li>
+          When you scroll back up, it goes back to its original place.
+        </li>
+      </ul>
+      <code>
+          <pre>
+.nav-bar{
+          position: sticky;
+          top: 0;
+}</pre
+          >
+        </code>
+      <p>
+        One-line explanation: <br />
+        ➡️ Sticky is a mix of relative and fixed normal at first, then fixed
+        when scrolling. Add content before and after the element who has
+        position: sticky.
+      </p>
+      <p>
+        We can also use positioning properties to stretch a box or container by setting its width and height using
+        position values.
+      </p>
+
+      <h2>Using Inset Shorthand</h2>
+      <p>
+        The inset property is a shorthand for: <br>
+        - top, right, bottom, left <br>
+        When you set all four, the element stretches automatically.
+      </p>
+      <code>
+<pre>
+.box {
+  position: absolute;
+  background: tomato;
+  inset: 20px;  <span class="t-r">top:20px; right:20px; bottom:20px; left:20px </span>
+}
+
+</pre>
+</code>
+
+
+      <h2>Complete Following Home Works🔻</h2>
+      <p>
+        1. <a href="HOME_WORK_ONE.png" target="_blank">HOME WORK 1</a>
+        <br>
+        2. <a href="HOME_WORK_2.png" target="_blank">HOME WORK 2</a>
+        <br>
+        3. <a href="Home_work_3.png" target="_blank">HOME WORK 3</a>
+        <br>
+        4. <a href="w3school_feature.html" target="_blank">HOME WORK 4</a>
+
+      </p>
+
+      <h2>CURSOR</h2>
+      <p>
+        The cursor property changes how your mouse pointer looks when it moves over an element.
+        For example, you can show a pointer, text cursor, move icon, or even a custom image.
+      </p>
+      <code>
+<pre>
+img {
+        cursor: pointer; <span class="t-r">Mouse pointer turns into a hand use control + space to see other values.</span>
+}
+</pre>
+</code>
+
+      <h2>Calc Function</h2>
+      <p>
+        The calc() function lets you do simple math (like +, -, *, /) to set sizes.
+        It helps when you want a mix of different units (%, px, etc.).
+      </p>
+      <code>
+<pre>
+.box {
+        width: calc(100% - 50px); <span class="t-r">Full width minus 50px</span>
+}
+</pre>
+</code>
+
+      <h2>Free Resources</h2>
+        <ul>
+          <li>
+            <a href="relative.html" target="_blank">Relative</a>
+          </li>
+          <li>
+            <a href="absolute.html" target="_blank">Absolute</a>
+          </li>
+          <li>
+            <a href="sticky.html" target="_blank">Sticky</a>
+          </li>
+          <li>
+            <a href="fixed.html" target="_blank">Fixed</a>
+          </li>
+          <li>
+            <a href="position.html" target="_blank">Width & Height Using Position</a>
+          </li>
+          <li>
+            <a href="https://anchoreum.com/" target="_blank">Anchor Positioning Game</a>
+          </li>
+          <li>
+            <a href="https://learnlayout.com/position" target="_blank">More About CSS Positioning</a>
+          </li>
+
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Test_your_skills/Position"
+              target="_blank">Flexbox</a>
+          </li>
+          <li>
+            <a href="https://snappify.com/blog/css-games" target="_blank">12 Best CSS Games to Learn it Faster</a>
+          </li>
+        </ul>
+
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

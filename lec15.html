@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords"
+    content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio, HTML CSS PART 2, HTML CSS PART 1, HTML CSS Course, Animations, GSAP, HTML COURSE, CSS COURSE, WEB DEV FUNDAMENTALS" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <!-- main section -->
+  <main class="container two-column">
+    <section>
+      <div class="h-1">Animations</div>
+      <p>
+        Welcome back to a new section of the HTML CSS PART 2 Series! In this section, we will learn how to take your CSS
+        designs to the next level by using transformations (2D/3D), transitions, and animations. This is a short but
+        impressive section where you will learn how to animate elements and make your web pages more dynamic and
+        engaging.
+      </p>
+
+      <h2>Transformations</h2>
+      <p>
+        In CSS, there are functions used to transform elements:
+      </p>
+      <ul>
+        <li><strong>rotate()</strong> – Rotates an element around a fixed point.</li>
+        <li><strong>scale()</strong> – Resizes an element, either making it larger or smaller.</li>
+        <li><strong>skew()</strong> – Tilts an element to the left or right.</li>
+        <li><strong>translate()</strong> – Moves an element from one position to another on the screen.</li>
+      </ul>
+      <p>
+        These functions help you change the appearance and position of elements dynamically.
+      </p>
+      <code>
+<pre>
+<span class="output">HTML</span>
+&lt;div class="box">
+  NaseebCodeStudio
+&lt;/div>
+
+<span class="output">CSS</span>
+body{
+      height: 100vh;
+}
+body, div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.box{
+      width: 100px;
+      height: 100px;
+      background: red;
+}
+<span class="t-r">Using Hover to See things Clearly</span>
+.box:hover{
+      transform: rotate(30deg);
+      transform: rotate(-30deg);
+
+      transform: scale(2);
+      transform: scale(0);
+      
+      transform: skew(30deg);
+      transform: skew(-30deg);
+
+      transform: translate(100px);
+      transform: translate(100px, 100px);
+
+      <span class="t-r">Combining multiple functions</span>
+      transform: rotate(45deg) translateX(10px);
+      <span class="t-r">the positions of these functiosn matters.</span>
+}
+</pre>
+</code>
+
+      <h2>3D Transformations</h2>
+      <p>
+        You just learned about 2D transformations. Now, let's move on to 3D transformations. In 2D, we can move an
+        element along the horizontal (X) and vertical (Y) axes. In 3D, we can also move it along the Z-axis. The Z-axis
+        adds depth, allowing us to bring the element closer to us or push it farther away.
+      </p>
+      <p>
+        To control this depth, we use the perspective function, which defines the distance between the viewer and the
+        object. There is also a transform-origin property that sets a fixed point on the element around which it
+        rotates, similar to how a ceiling fan rotates around its center or a car wheel spins around its axis.
+      </p>
+      <code>
+<pre>
+.box:hover{
+      <span class="t-r">Translate is a shorthand of x and y axis but there is also a z axis</span>
+      transform: tralsateZ(-100px);
+
+      <span class="t-r">Nothing will happen until we don't use perspective()</span>
+      transform: perspective(100px) translateZ(200px);
+}
+
+.box1:hover{
+      transform: perspective(200px) rotateX(45deg);
+      transform: perspective(200px) rotateY(45deg);
+      transform: perspective(200px) rotateZ(45deg);
+}
+
+.box2:hover{
+      transform: perspective(200px) rotateY(70deg);
+
+      <span class="t-r">Set Origin of the box based on X and Y axis.</span>
+      transform-origin: 0 0;
+
+      transform-origin: 0 50%;
+}
+</pre>
+</code>
+      <p>
+        What if we have multiple elements? There is a perspective property that allows us to give a single perspective
+        to each element. Now, let's wrap two
+        &lt;div> elements inside a container or parent element to group them together.
+      </p>
+      <p>
+        If we want to apply different transformations to each child, or if we want all children to share the same
+        perspective, we should use the perspective property on the parent element instead of using it inside the
+        transform function for each child.
+      </p>
+      <code>
+<pre>
+<span class="output">HTML</span>
+&lt;div class="container">
+    &lt;div class="box">NaseebCodeStudio&lt;/div> 
+    &lt;div class="box box2">NaseebCodeStudio&lt;/div>
+&lt;/div>
+
+<span class="output">CSS</span>
+.container{
+      persepctive: 200px;
+}
+
+.container:hover .box{
+      transform: rotateY(60deg);
+      transform-origin: 0 50%;
+}
+
+.box2{
+      transform: rotateX(45deg);
+}
+</pre>
+</code>
+
+      <h2>Transitions</h2>
+      <p>
+        Transitions are used to make changes between two states of an element happen smoothly instead of instantly. For
+        example, if an element transforms from its first state to its last state, a transition defines how long and in
+        what way this change should occur.
+      </p>
+      <p>
+        Transitions are used to make changes between two states of an element happen smoothly instead of instantly. For
+        example, if an element transforms from its first state to its last state, a transition defines how long and in
+        what way this change should occur.
+      </p>
+      <p>Here’s how transitions work:</p>
+      <ol>
+        <li><strong>Property</strong> – First, we specify which property or properties the transition will apply to. You
+          can target a single property, multiple properties, or use the keyword all to apply the transition to
+          everything.</li>
+        <li><strong>Duration</strong> – Next, we set how long the transition should take (in seconds or milliseconds) to
+          go from the initial state to the final state.</li>
+        <li><strong>Timing Function</strong> – This defines the speed curve of the transition. For example, it can start
+          slow and end
+          fast, or move at a constant speed. We can use predefined functions like linear, ease, ease-in, ease-out, or
+          create custom curves using cubic-bezier. A helpful tool for this is cubic-bezier.com
+          ,where you can experiment and copy the generated values.</li>
+        <li><strong>Delay</strong> – This optional value sets how long to wait before starting the transition.</li>
+      </ol>
+      <p>You can animate one property or multiple properties at the same time using transitions.</p>
+      <code>
+<pre>
+&lt;div class="box">&lt;/div>
+
+.box{
+      width: 200px;
+      height: 200px;
+      background: red;
+
+      <span class="t-r">Transition: property-name duration timing-function dealy;</span>
+      transition: transform 0.5s linear;
+      transition: transform 0.5s ease;
+      transition: transform  0.5s cubic-bezier(.23, .59, .79, .41);
+      transition: transform  0.5s, background 1s;
+}
+
+.box:hover{
+      transform: rotate(90deg);
+      background: black;
+}
+</pre>
+</code>
+
+      <h2>Animations</h2>
+      <p>
+        Transitions vs. Animations in CSS:
+      </p>
+      <ol>
+        <li><strong>Transitions</strong> are used for simple, smooth changes of properties, like changing color, size,
+          or position when
+          an element is hovered or clicked. They are best for simple effects.</li>
+        <li><strong>Animations</strong> are used for more complex or continuous effects. Unlike transitions, animations
+          can play automatically without user interaction.</li>
+        <li>CSS animations are created using @keyframes, which defines the frames of the animation. Just like a movie,
+          which is made of multiple frames, CSS animations consist of multiple steps.</li>
+        <li><strong>Naming Animations:</strong> After @keyframes, you give your animation a meaningful name to identify
+          it.</li>
+        <li><strong>Defining Animation Steps:</strong> There are two ways to define animation frames:
+          <ol>
+            <li>from and to keywords: from represents the start state, and to represents the end state.</li>
+            <li>Percentage (%) values: For multiple steps in an animation.
+              <ul>
+                <li>0% = first frame</li>
+                <li>50% = middle frame</li>
+                <li>100% = last frame</li>
+              </ul>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <p>
+        This lets you control how an object changes over time, performing multiple actions during the animation
+        duration.
+      </p>
+      <ul>
+        <li>Animation Properties in CSS:
+          <ul>
+            <li>animation-direction → Controls the direction of the animation (normal, reverse, alternate).</li>
+            <li>animation-fill-mode → Determines how the element retains styles before and after the animation.</li>
+            <li>animation-iteration-count → Sets how many times the animation repeats.</li>
+          </ul>
+        </li>
+        <li>The choice of properties and steps depends on how complex you want your animation to be and how many changes
+          you want to make during it.</li>
+      </ul>
+      <code>
+<pre>
+@keyframes ncs{
+      0%{
+        transform: scale(1);
+      }
+      25%{
+        transform: scale(1.5);
+      }
+      50%{
+        transform: rotate(90deg);
+        background: black;
+      }
+      100%{
+        transform: rotate(0);
+      }
+}
+
+.box{
+      width: 100px;
+      height: 100px;
+      background: red;
+
+      <span class="t-r">there is a shorthand property called animation for following animation properties.</span>
+      animation-name: ncs;
+      animation-duration: 4s;
+      animation-delay: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-out;
+      animation-direction: alternate;
+      animation-fill-mode: backword;      
+}
+</pre>
+</code>
+
+      <h2>Reusable Animations</h2>
+      <p>
+        If you want to apply the same animation to multiple elements, the easiest way is to use shorthand syntax or a
+        utility class. First, create a class for your animation. Then, to animate any element, simply add that class to
+        it.
+      </p>
+      <p>
+        There are websites that provide ready-made CSS animations. One popular option is animate.style, <a
+          href="https://animista.net/" target="_blank">Animista</a>
+        . <br> You can also search for "CSS animations" to find other tools. These websites show examples of how
+        animations
+        work.
+      </p>
+      <p>To use an animation from such a website:</p>
+      <ol>
+        <li>Copy the CDN link provided by the website.</li>
+        <li>Paste the link inside the &lt;head> section of your HTML document.</li>
+        <li>Copy the animation class you like.</li>
+        <li>Add that class to any HTML element you want to animate.</li>
+      </ol>
+      <p>
+        By doing this, you can easily reuse the same animation across multiple elements without writing the animation
+        code from scratch.
+      </p>
+      <code>
+<pre>
+<span class="output">HTML Head</span>
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+&lt;h1 class="animate_animated animate_bounce">NaseebCodeStudio&lt;/h1>
+</pre>
+</code>
+      <p>
+        here are some animations which you can try <br> 1. <a href="ncs_anim.html">Animations</a>
+      </p>
+      <p>2. <a href="anim2.html" target="_blank">Same Animation with Different Transitions.</a></p>
+      <p>3. <a href="changing.html" target="_blank">Changing Heading + Background Animation</a></p>
+
+      <h2>Home Work</h2>
+      <ul>
+        <li><a href="Transform_HW1.png">Create these Transformed Cards</a></li>
+      </ul>
+
+
+      <!-- jump to top button -->
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+
+</html>

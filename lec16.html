@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords"
+    content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio, HTML CSS PART 2, HTML CSS PART 1, HTML CSS Course, Animations, GSAP, HTML COURSE, CSS COURSE, WEB DEV FUNDAMENTALS" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <!-- main section -->
+  <main class="container two-column">
+    <section>
+      <div class="h-1">CSS CODE IN SHAPE</div>
+      <p>
+        Welcome to another section of the HTML and CSS Part 2 series! In this section, we will learn how to write
+        maintainable CSS code. First, we’ll cover CSS best practices to make your code cleaner and easier to manage.
+        Then, we’ll explore CSS variables and techniques for removing duplicate code. After that, we’ll dive into
+        Object-Oriented CSS (OOCSS), which helps create reusable and modular styles. Finally, we’ll discuss BEM (Block
+        Element Modifier), a popular naming convention for CSS classes. This section is very important because writing
+        well-structured and maintainable CSS ensures that you can modify your code anywhere without breaking it.
+      </p>
+
+      <h2>CSS Best Practices</h2>
+      <p>
+        One of the key practices in CSS is writing clean and maintainable code. A major factor in achieving this is
+        consistent naming conventions.
+      </p>
+      <p>In real-world web development projects, you often work in teams. When different developers join a project and
+        use their own naming styles, the code can become confusing and messy. Without a standard, it’s hard to maintain
+        or scale the project.</p>
+      <p>
+        To avoid this, pick a naming convention for your CSS classes and IDs and stick to it throughout the entire
+        project. This guideline ensures that everyone on the team writes code in a consistent and understandable way.
+      </p>
+      <p>
+        Example: Consistent Naming <br>
+        Instead of mixing styles like this:
+      </p>
+      <code>
+<pre>
+&lt;div class="headerTop">Header&lt;/div>
+&lt;div id="main_body">Main Content&lt;/div>
+&lt;div class="footerSection">Footer&lt;/div>
+</pre>
+</code>
+      <p>Use a consistent convention, for example kebab-case (all lowercase, words separated by hyphens):</p>
+      <code>
+<pre>
+&lt;div class="header-top">Header&lt;/div>
+&lt;div class="main-body">Main Content&lt;/div>
+&lt;div class="footer-section">Footer&lt;/div>
+
+<span class="output">And the corresponding CSS:</span>
+.header-top {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.main-body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer-section {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+</pre>
+</code>
+
+      <h4>Create Logical Sections in your stylesheet</h4>
+      <p>
+        For a small project, you might use a single CSS stylesheet. However, for larger projects, it’s better to split
+        your styles into multiple stylesheets to keep things organized. This is where CSS preprocessor tools like <a
+          href="https://sass-lang.com/" target="_blank">Sass</a>
+        or <a href="https://lesscss.org/" target="_blank">LESS</a> become useful.
+      </p>
+      <p>
+        In a small project, you can still have one stylesheet but organize it using different containers or sections
+        within the file. For larger projects, you divide your CSS into separate files like one for layout, one for
+        typography, one for colors, etc. and then combine them using a preprocessor. This approach keeps your code
+        manageable, easier to maintain, and more scalable.
+      </p>
+      <code>
+<pre>
+<span class="t-r">Break your code in different sections using comments.</span>
+&lt;!-- Css Reset --&gt;
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin:  0;
+}
+
+&lt;!-- Basic CSS --&gt;
+html{}
+
+&lt;!-- Typography --&gt; 
+h1, h2, h3 {}
+
+&lt;!-- Forms --&gt;
+
+&lt;!-- Navigation Bar --&gt;
+</pre>
+</code>
+
+      <h4>Avoid Overly Specific Selectors</h4>
+      <p>
+        This is a common issue among many developers. Using overly specific or deeply relational selectors can make your
+        CSS messy and hard to maintain. If your HTML structure changes, these selectors may stop working, causing your
+        styles to break.
+      </p>
+
+      <code>
+<pre>
+&lt;div class="nav">
+  &lt;ul class="items">
+    &lt;li class="item">Link 1&lt;/li>
+    &lt;li class="item">Link 2&lt;/li>
+    &lt;li class="item">Link 3&lt;/li>
+  &lt;/ul>
+&lt;/div>
+
+<span class="t-r">Avoid these selectors</span>
+div.nav > ul.items > li{}
+
+<span class="t-r">Instead of that</span>
+&lt;div class="nav">
+  &lt;ul class="nav-items">
+    &lt;li class="nav-item">Link 1&lt;/li>
+    &lt;li class="nav-item">Link 2&lt;/li>
+    &lt;li class="nav-item">Link 3&lt;/li>
+  &lt;/ul>
+&lt;/div>
+
+.nav-item{}
+</pre>
+</code>
+
+      <h4>Avoid Using !important</h4>
+      <p>
+        Try to avoid using the !important keyword as much as possible. If you feel the need to use it, it
+        usually means something is wrong in your CSS, like the selectors are not structured properly. Instead of relying
+        on !important, try to write more specific and well-organized selectors.
+      </p>
+
+
+      <h4>Sort CSS Properties</h4>
+      <p>
+        Sorting CSS properties is not mandatory, but it makes your code look more organized and professional. To sort
+        your properties, select all the CSS code you want to arrange, press <strong>Ctrl + Shift + P</strong>, search
+        for "Sort," and choose the option to sort your properties. This will arrange them alphabetically (from A to Z)
+        or in ascending order.
+      </p>
+
+
+      <h4>Take Advantage of Style Inheritance</h4>
+      <p>
+        When you have a container with multiple child elements, you might want all of them to share the same style, like
+        a font family or text color. Instead of applying the same style to each element individually, you can take
+        advantage of CSS inheritance or reusable classes.
+      </p>
+      <p>
+        By default, some CSS properties (like color, font-family) are inherited by child elements. But certain elements,
+        like &lt;a> (links), do not automatically inherit some styles. In that case, you would need to explicitly apply
+        the same style.
+      </p>
+      <p>
+        To avoid repeating yourself (a principle called DRY Don’t Repeat Yourself), you can create a CSS class with
+        the desired style and assign it to all elements that should share that style. This way, your code stays clean,
+        maintainable, and consistent.
+      </p>
+      <code>
+<pre>
+&lt;div class="container">
+    &lt;p>This paragraph inherits the container's font and color.&lt;/p>
+    &lt;p>Another paragraph also inherits the same style.&lt;/p>
+    &lt;a href="#">This link may not inherit color by default&lt;/a>  
+&lt;/div>
+
+.container {
+        font-family: Arial, sans-serif;
+        color: darkblue;
+    }
+</pre>
+</code>
+      <p>
+        Notice: In some browsers, &lt;a> elements do not automatically inherit the color. You may need to explicitly
+        style
+        them.
+      </p>
+      <code>
+<pre>
+&lt;div>
+  &lt;p class="text-style">This paragraph uses the reusable class.&lt;/p>
+  &lt;p class="text-style">Another paragraph with the same class.&lt;/p>
+  &lt;a href="#" class="text-style">This link now shares the same style&lt;/a>
+&lt;/div>
+
+.text-style {
+        font-family: Arial, sans-serif;
+        color: darkblue;
+    }
+</pre>
+</code>
+      <p>Benefits:</p>
+      <ul>
+        <li>Avoid repeating the same CSS for multiple elements.</li>
+        <li>Make your code cleaner and easier to maintain.</li>
+        <li>Keep styles consistent across your webpage.</li>
+      </ul>
+
+      <h2>CSS Variables (Custom Properties)</h2>
+      <p>
+        <strong>What are CSS Variables?</strong> <br>
+        CSS variables, also called CSS custom properties, allow you to store values in one place and reuse them
+        throughout your stylesheet. This helps keep your code DRY (Don't Repeat Yourself), meaning you don’t have to
+        rewrite the same values multiple times.
+      </p>
+      <p>
+        <strong>How to Create CSS Variables:</strong>
+        <br>You can define CSS variables inside the :root selector. The :root selector represents the highest-level
+        element in the HTML document (essentially the &lt;html> element).
+      </p>
+      <p>
+        Rules for CSS Variables:
+      </p>
+      <ul>
+        <li>Variable names must start with double hyphens (--).</li>
+        <li>You can use these variables anywhere in your CSS using the var() function.</li>
+      </ul>
+      <code>
+<pre>
+&lt;div class="one">&lt;/div>
+&lt;div class="two">&lt;/div>
+
+<span class="t-r">Define variables in :root</span>
+:root{
+      --primary-color: #f00;
+      --border-size: 2px;
+      --border-radius: 10px;
+      --margin: 1rem;
+      --secondary-color: #2ecc71;
+      --font-size: 16px;
+}
+
+<span class="t-r">Use variables in your CSS</span> 
+body {
+      font-size: var(--font-size);
+      color: var(--primary-color);
+      background-color: var(--secondary-color);
+}
+
+div{
+      width: 200px;
+      height: 200px;
+}
+
+.one{
+      background: var(--border-radius);
+      margin-left: var(--margin);
+}
+
+.two{
+      border: var(--border-size) solid var(--primary-color);
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+p {
+    color: var(--secondary-color);
+}
+
+</pre>
+</code>
+      <h4>Description of Above Code:</h4>
+      <ul>
+        <li>--primary-color, --secondary-color, and --font-size are CSS variables.</li>
+        <li>var(--primary-color) is used to apply the variable wherever needed.</li>
+        <li>If you ever want to change the main color of your website, you only need to change it in :root, and it will
+          automatically update everywhere.</li>
+      </ul>
+      <p>Bonus Tip: You can even override CSS variables inside specific elements:</p>
+      <code>
+<pre>
+section {
+        --primary-color: #e74c3c; <span class="t-r">Override primary color only in this section</span>
+        color: var(--primary-color);
+}
+</pre>
+</code>
+      <p>This makes your styling flexible and easy to maintain.</p>
+
+      <h2>Object-Oriented</h2>
+      <p>
+        If you have experience in programming, you have probably heard the term OOP (Object-Oriented Programming). OOP
+        is a way of creating reusable components in code. The same concept can be applied in CSS to make reusable and
+        maintainable styles.
+      </p>
+      <p>
+        When we reuse styles, we don’t have to repeat code, which results in a smaller, cleaner, and easier-to-maintain
+        stylesheet.
+      </p>
+      <p>
+        OOP CSS is based on two main principles, which we’ll cover here:
+      </p>
+      <h4>Principle 1: Separate Containers from Content</h4>
+      <p>The first principle says we should separate the container from the content inside it.</p>
+      <p>
+        For example, let's create a header with a class .hero and a button inside it with a class .btn:
+      </p>
+      <code>
+<pre>
+&lt;header class="hero">
+  &lt;button class="btn">Click Me&lt;/button>
+&lt;/header>
+
+&lt;aside class="sidebar">
+  &lt;button class="btn">Subscribe&lt;/button>
+&lt;/aside>
+</pre>
+</code>
+      <p>Before OOP CSS, you might style buttons like this:</p>
+      <code>
+<pre>
+.hero .btn {
+      padding: 10px 20px;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+}
+</pre>
+</code>
+      <p>If you have another button in the sidebar, you would need to repeat the styles, which is not efficient.</p>
+      <p>
+        With OOP CSS, we separate the container (.hero) from the content (.btn):
+      </p>
+      <code>
+<pre>
+.btn {
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+}
+</pre>
+</code>
+      <p>Now, the .btn class can be used anywhere in the website, without tying it to a specific container.</p>
+      <h4>Principle 2: Separate Structure from Skin</h4>
+      <p>
+        The second principle says we should separate the structure of a component from its visual appearance (skin).
+      </p>
+      <p>For example, you might want one button to have a red background and another to have a gold background:</p>
+      <code>
+<pre>
+&leqslant;button class="btn btn-red">Click Me&leqslant;/button>
+&leqslant;button class="btn btn-gold">Subscribe&leqslant;/button>
+</pre>
+</code>
+      <p>Without OOP CSS, you might duplicate the button structure for each color:</p>
+      <code>
+<pre>
+.btn-red {
+        padding: 10px 20px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+}
+
+.btn-gold {
+        padding: 10px 20px;
+        background-color: gold;
+        color: white;
+        border: none;
+        border-radius: 5px;
+}
+</pre>
+</code>
+      <p>Notice the repeated code? That’s not maintainable.</p>
+      <p>With OOP CSS, we separate the structure from the skin:</p>
+      <code>
+<pre>
+&lt;button class="btn btn-primary">Click Me&lt;/button>
+&lt;button class="btn btn-secondary">Subscribe&lt;/button>
+
+<span class="t-r">Structure </span>
+.btn {
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+}
+
+<span class="t-r">Skin </span>
+.btn-primary {
+        background-color: red;
+}
+
+.btn-secondary {
+        background-color: gold;
+}
+</pre>
+</code>
+      <p>Now, the structure (padding, border, radius) is defined once in .btn, and the skin (color) is defined
+        separately.</p>
+      <p>This approach allows you to reuse components easily and change their appearance without rewriting structure.
+      </p>
+
+      <h2>BEM</h2>
+      <p>
+        <strong>What is BEM?</strong>
+        <br>
+        BEM stands for Block, Element, Modifier. It is a methodology for writing CSS that makes your code more modular,
+        reusable, and maintainable. Think of a web page as a collection of blocks (components or modules), each
+        containing elements. You can style these blocks and elements, and sometimes modify them to create variations.
+      </p>
+      <p>Key points about BEM:</p>
+      <ul>
+        <li><strong>Block</strong>: A standalone component like a card, header, or form.</li>
+        <li><strong>Element</strong>: A part of a block that has no standalone meaning, such as a card’s header, body,
+          or price.</li>
+        <li><strong>Modifier</strong>: A flag that changes the appearance or behavior of a block or element, such as
+          highlighting a card
+          or marking a button as active.</li>
+      </ul>
+      <p>
+        Example of BEM naming:
+      </p>
+      <code>
+<pre>
+<span class="t-r">Block: card</span>
+&lt;div class="card card--popular">
+    &lt;span class="t-r">Element: card header&lt;/span>
+    &lt;div class="card__header">Product Name&lt;/div>
+
+    &lt;span class="t-r">Element: card body&lt;/span>
+    &lt;div class="card__body">Product Description&lt;/div>
+    
+    &lt;span class="t-r">Element: card price&lt;/span>
+    &lt;div class="card__price">$99&lt;/div>
+    &lt;button class="btn btn--primary">Buy Now&lt;/button>
+&lt;/div>
+</pre>
+</code>
+      <p>Explanation of Above Code:</p>
+      <ul>
+        <li>card👉 Block</li>
+        <li>card__header👉 Element of the card block</li>
+        <li>card--popular👉 Modifier of the card block</li>
+        <li>btn👉 Another block (button)</li>
+        <li>btn--primary👉 Modifier of the button</li>
+      </ul>
+      <p>BEM helps you avoid complex selectors, makes styles predictable, and improves collaboration in larger projects.
+      </p>
+      <h4>General CSS Best Practices</h4>
+      <p><strong>1. Naming Conventions</strong></p>
+      <p>Use consistent naming for classes and IDs. Common conventions:</p>
+      <ul>
+        <li>PascalCase👉 CardHeader</li>
+        <li>camelCase👉 cardHeader</li>
+        <li>kebab-case👉 card-header</li>
+      </ul>
+
+      <p><strong>2. Organizing CSS</strong></p>
+      <ul>
+        <li>Small projects: One stylesheet is enough; use comments for sections.</li>
+        <li>Large projects: Split CSS into multiple files and combine them using Webpack, Rollup, or Parcel.</li>
+      </ul>
+
+      <p><strong>3. Avoid Over-Specific Selectors</strong></p>
+      <ul>
+        <li>Limit nesting to 2–3 levels.</li>
+      </ul>
+      <code>
+<pre>
+<span class="t-r">Too specific</span>
+.card .card__body p span {
+         color: red; 
+}
+
+<span class="t-r">Better</span>
+.card__body span { 
+         color: red;
+}
+</pre>
+</code>
+      <p><strong>4. Avoid !important</strong> Use it only if absolutely necessary. Overuse makes debugging difficult.
+      </p>
+      <p><strong>5. Sort CSS Properties</strong> Sorting properties makes your code easier to read and maintain.</p>
+      <code>
+<pre>
+.card__body {
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+          margin: 0.5rem;
+          color: #333;
+}
+</pre>
+</code>
+      <p><strong>6. Use Inheritance to Reduce Duplication</strong></p>
+      <code>
+<pre>
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+p {
+    font-size: 16px; <span class="t-r">inherits color from body </span>
+}
+</pre>
+</code>
+
+      <p><strong>7. Use CSS Variables (Custom Properties)</strong></p>
+      <code>
+<pre>
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --font-size: 16px;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  font-size: var(--font-size);
+}
+
+.btn--secondary {
+  background-color: var(--secondary-color);
+}
+</pre>
+</code>
+      <p><strong>8. Object-Oriented CSS (OOCSS) Principles</strong></p>
+      <p>OOCSS is about creating reusable components by separating:</p>
+      <ol>
+        <li>Container and content</li>
+        <li>Structure and skin (style/appearance)</li>
+      </ol>
+      <p>Using BEM, OOCSS, and CSS variables together makes your code clean, scalable, and easy to maintain.</p>
+
+
+      <div class="h-1">What's Next</div>
+      <p>
+        We have reached the end of this series, the part three is based on projects now at least create 10 projects to
+        master all the concepts which you have learned in HTML CSS PART 1 and HTML CSS PART 2. Happy Coding😜
+      </p>
+
+      <!-- jump to top button -->
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

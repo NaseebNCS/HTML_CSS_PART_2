@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords" content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main class="container two-column">
+    <section>
+      <div class="h-1">OVERFLOWING</div>
+      <p>
+        One of the most important concepts we need to understand is that when
+        dealing with fixed-size elements, we may encounter overflow content.
+        If we have a container with a fixed size and the content exceeds the
+        container’s capacity, overflow occurs. It’s similar to a glass: if we
+        pour too much water into it, the water starts to overflow.
+      </p>
+      <code>
+          <pre>
+.box{
+      width: 100px;
+      height: 100px;
+      border: 3px solid red; 
+}</pre
+          >
+        </code>
+      <p>
+        If we create a paragraph inside this box and give it more text than
+        the box can contain, it will start overflowing. However, we can
+        control the overflow in different ways.
+      </p>
+      <code>
+          <pre>
+.box{
+      width: 100px;
+      height: 100px;
+      border: 3px solid red; 
+      overflow: visible; <span class="t-r">/* Default Value */</span>
+      overflow: hidden; <span class="t-r">/* Hides overflow */</span>
+      overflow: scroll; <span class="t-r">/* Enables the Horizontal & Vertical Scroll bar. */</span>
+      overflow: auto; <span class="t-r">/* Enables the Scroll bar when the content starts overflowing. */</span>
+}</pre>
+        </code>
+      <p>
+        The overflow property is a shorthand for two properties: overflow-x
+        and overflow-y. When we supply a single value to overflow, it applies
+        to both overflow-x and overflow-y. However, sometimes we may want more
+        control over the overflow in different directions.
+      </p>
+      <code>
+          <pre>
+.box{
+      overflow: hidden auto; <span class="t-r">/* overflow-x: is hidden and overflow-y is auto */</span>
+}
+</pre>
+        </code>
+      <p>
+        It depends on the layout which type of overflow we want to control.
+        Overflow is used to manage the content of fixed elements.
+      </p>
+
+      <h2>SCROLLBAR</h2>
+      <p>Scrollbar Properties (Chrome, Edge, Safari -WebKit)</p>
+      <br />
+      <code>
+          <pre>1. ::-webkit-scrollbar</pre>
+        </code>
+      <p>Controls the overall width/height of the scrollbar.</p>
+      <br />
+
+      <code>
+          <pre>2. ::-webkit-scrollbar-track</pre>
+        </code>
+      <p>Styles the background track area where the scrollbar thumb moves.</p>
+      <br />
+      <code>
+          <pre>3. ::-webkit-scrollbar-thumb</pre>
+        </code>
+      <p>Styles the draggable thumb that moves inside the track.</p>
+      <br />
+      <code>
+          <pre>4. ::-webkit-scrollbar-thumb:hover</pre>
+        </code>
+      <p>Styles the thumb when the user hovers over it.</p>
+      <br />
+      <code>
+          <pre>5. ::-webkit-scrollbar-button</pre>
+        </code>
+      <p>
+        Styles the up/down or left/right arrow buttons on the scrollbar
+        (rarely used).
+      </p>
+      <br />
+      <code>
+          <pre>6. ::-webkit-scrollbar-corner</pre>
+        </code>
+      <p>
+        Styles the bottom-right corner where horizontal and vertical
+        scrollbars meet.
+      </p>
+      <br />
+      <code>
+          <pre>7. ::-webkit-scrollbar-track-piece</pre>
+        </code>
+      <p>Styles the part of the track not covered by the thumb.</p>
+      <br />
+      <code>
+          <pre>8. ::-webkit-scrollbar-thumb:active</pre>
+        </code>
+      <p>Styles the scrollbar thumb when clicked or dragged.</p>
+      <br />
+
+      <h2>Scrollbar Properties (Firefox)</h2>
+      <br />
+      <code>
+          <pre>9. scrollbar-width</pre>
+        </code>
+      <p>Controls the scrollbar thickness (auto, thin, or none).</p>
+      <br />
+      <code>
+          <pre>10. scrollbar-color</pre>
+        </code>
+      <p>Sets the thumb and track colors for Firefox scrollbars.</p>
+      <br />
+      <br />
+      <code>
+          <pre>
+.my-box {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+}
+
+<span class="t-r">/* Scrollbar width */</span>
+.my-box::-webkit-scrollbar {
+  width: 10px;   <span class="t-r">/* vertical scrollbar */</span>
+  height: 10px;  <span class="t-r">/* horizontal scrollbar */</span>
+}
+
+<span class="t-r">/* Scrollbar Track (background) */</span>
+.my-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+<span class="t-r">/* Scrollbar Thumb (the moving part) */</span>
+.my-box::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+<span class="t-r">/* Thumb hover */</span>
+.my-box::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+<span class="t-r">/* Firefox uses a different syntax: */</span>
+.my-box {
+  scrollbar-width: thin;          /* auto | thin | none */
+  scrollbar-color: #888 #f1f1f1;  /* thumb | track */
+}
+
+
+<span class="t-r">/* Fully Custom Modern Scrollbar (Cross-Browser) */</span>
+<span style="color: White;"> Combine both:</span>
+.my-box {
+  overflow: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #555 #e0e0e0;
+}
+
+/* Chrome, Edge, Safari */
+.my-box::-webkit-scrollbar {
+  width: 12px;
+}
+
+.my-box::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.my-box::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 20px;
+  border: 3px solid #e0e0e0;
+}
+          </pre>
+        </code>
+
+
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

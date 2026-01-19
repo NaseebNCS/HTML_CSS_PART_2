@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords" content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio</title>
+  <link rel="stylesheet" href="lec_style.css" />
+</head>
+
+<body>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <header class="site-header small flex">
+    <div class="brand">
+      <h1>NaseebCodeStudio</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main class="container two-column">
+    <section>
+      <div class="h-1">Measurement Units</div>
+      <p>
+        Until now, we were using pixels for measurement, but in CSS,
+        measurement units fall into two categories:
+      </p>
+      <ol>
+        <li>
+          <strong>Absolute</strong>
+          <ul>
+            <li>px</li>
+            <li>pt</li>
+            <li>in</li>
+            <li>cm</li>
+            <li>mm</li>
+          </ul>
+
+        </li>
+        <li>
+          <strong>Relative</strong>
+          <ul>
+            <li>%</li>
+            <li>vw</li>
+            <li>vh</li>
+            <li>em</li>
+            <li>rem</li>
+          </ul>
+        </li>
+      </ol>
+      <p>
+        Absolute units are always fixed, whereas relative units are relative
+        to something else: <br />
+        👉 % is relative to the size of the parent element. <br />
+        👉 vw and vh are relative to the viewport. <br />
+        👉 em and rem are relative to the font size. <br />
+        What we use depends on the type of problem we need to solve.
+      </p>
+
+      <h2>PIXEL</h2>
+      <code>
+          <pre>
+.box{
+        width: 100px;
+        height: 100px; 
+        background-color: red; 
+}</pre
+          >
+        </code>
+      <br />
+      <p>
+        This box will remain the same on all devices because we are using
+        pixel units. By confirming this, we can resize the browser window
+        without affecting it. Pixels are useful when we want a fixed CSS
+        property across all devices, such as borders.
+      </p>
+      <code>
+          <pre>
+.box{
+        width: 100px;
+        height: 100px; 
+        background-color: red; 
+        border: 3px solid black;
+}</pre
+          >
+        </code>
+      <p>
+        In the above box, we have 3px borders, which I want to remain
+        consistent on all types of devices. This is one case where using
+        pixels is useful.
+      </p>
+
+      <h2>%</h2>
+      <code>
+          <pre>
+.parent{
+        width: 300px;
+        height: 300px;
+        background-color: gold;
+}
+.child{
+        width: 50%;
+        height: 100px; 
+        background-color: red; 
+        border: 3px solid black;
+}</pre
+          >
+        </code>
+      <p>
+        In a child box, we have a width of 50%. This means 50% of the parent’s
+        width. In this case, the parent has a width of 300px, so 50% equals
+        150px. If we resize the parent element, the 50% will change
+        accordingly. All these relative units are converted into pixels by the
+        browser, and you can check this in the Computed tab of the developer
+        tools.
+        <br /><br />
+        If the box you created does not have a parent, the width of the body
+        will apply, so the child box will take half of the screen width. This
+        is because the body element is a block-level element. If you resize
+        the browser window, you will see the width of the child box adjust. By
+        default, the width of block-level elements is 100%, and the height is
+        0.
+      </p>
+
+      <h2>VH and VW</h2>
+      <code>
+          <pre>
+.child{
+        width: 100vw;
+        height: 100vh; 
+        background-color: red; 
+        border: 3px solid black;
+}</pre
+          >
+        </code>
+      <p>
+        Here, we are using vw and vh, which are relative units. These units
+        are used for the viewport width and height. In this example, we are
+        specifying that the child box should take up the entire width and
+        height of the viewport that is visible on the device.
+      </p>
+      <ul>
+        <li>1vw or 1vh is equal to 1% of the viewport width or height.</li>
+        <li>100vw / 100vh means 100% of the screen width and 100% of the visible
+          viewport height.</li>
+      </ul>
+      <p>
+        Always resize the browser window to see the difference.
+      </p>
+
+      <h2>EM</h2>
+      <p>
+        rem and em are relative units based on font size. We use these units
+        to adjust the layout according to the font size. 1em means the same
+        size as the font of the current element, while 10em means 10 times the
+        font size of the current element. For example, if the element has a
+        font size of 10px, it will be multiplied by the given em value.
+      </p>
+      <code>
+          <pre>
+p{
+       font-size: 2em; <span class="t-r">/* 16 x 2 = 32 */</span>
+}</pre>
+        </code>
+
+      <h2>Another Example with em</h2>
+      <code>
+          <pre>
+.parent-box{
+       font-size: 10px; 
+}
+
+.child-box{
+        font-size: 3em; <span class="t-r">/* 10 x 3 = 30 */</span>
+}</pre>
+        </code>
+      <p>
+        2em means the font size is relative to its parent element, in this
+        case, the paragraph's parent element. We haven’t specified a font
+        size, so currently, the parent is the body. The body doesn’t have a
+        defined font size either, so it inherits from the html element. By
+        default, browsers assign a base font size of 16px to the html element.
+        Therefore, the body takes this 16px from html. A paragraph with a font
+        size of 2em means it will be 2 times the body’s font size, which
+        equals 32px. To verify this, you can always use the DevTools
+        “Computed” tab.
+        <br /><br />
+        The em unit always depends on inheriting the font size from its parent
+        element. Similarly, 5em means the parent element’s font size is
+        multiplied by 5 and applied to the target (child) element.
+      </p>
+
+      <h2>REM</h2>
+      <p>
+        There is a problem with em: if we don’t explicitly set the font size on the parent element, we may get confused
+        by the hierarchy specifically, where this em will be multiplied. To solve this, the rem unit comes in handy. For
+        example, if we say 10rem, it means 10 times the font size of the root element. The root element is html, and by
+        default, its size is 16px.
+        <br><br>
+        In the case of rem, we only need to remember the root element’s size, unlike em, where the hierarchy affects the
+        calculation. We can also use rem and em for width, height, padding, margins, etc. There are no strict limits,
+        but we should always know what we are doing.
+        <br><br>
+        To make calculations easier, we can set the root font size to 62.5%, which makes 1rem equal to 10px (based on
+        the default 16px). Note that 16px is the base font size of any element except headings.
+      </p>
+      <code>
+          <pre>
+html{
+        font-size: 62.5%; <span class="t-r">/* 62.5% of 16px = 10px */</span>
+}
+.box{ 
+        width: 15rem; <span class="t-r">/* 10 x 15 = 150 */</span>
+        height: 100vh;
+        background-color: gold;
+        border-top: 3px solid orange; 
+}</pre>
+        </code>
+
+      <h2>Browser Font-Size</h2>
+      <p>
+        With your profile icon in the browser, you will see three dots. Click on the three dots, go to Settings, and
+        search for Font Size. The default font size is Medium, which is recommended and equal to 16px. However, if we
+        change the font size, it will no longer remain 16px.
+      </p>
+
+      <h2>Which Unit to use</h2>
+      <p>
+        It always depends on the type of problem we want to solve. We use pixels (px) to have a fixed size for elements
+        in the code, vh or vw to size elements relative to the viewport, and rem to adjust the size according to the
+        root element or the default size of the browser.
+      </p>
+
+      <h2>Free Resources</h2>
+        <ul>
+          <li>
+            <a href="https://dev.to/mo-dev/10-game-changing-css-practices-that-will-level-up-your-code-h6">10 Game
+              Changing
+              CSS Practices</a>
+          </li>
+          <li>
+            <a href="https://css.city/practice/playing-games.html?utm_source=chatgpt.com">Playing Games</a>
+          </li>
+          <li>
+            <a href="https://nikitahl.com/learn-css-by-playing-games?utm_source=chatgpt.com">12 FREE CSS games to
+              practice
+              and Improve your CSS skills. </a>
+          </li>
+          <li>
+            <a href="https://elephantsolutions.net/learn-css-with-games/?utm_source=chatgpt.com">Learn CSS Palying
+              Games</a>
+          </li>
+        </ul>
+
+      <a href="#"
+        style="background-color: rgb(255, 255, 255); display: block; text-align: center; color: rgb(255, 0, 0); font-weight: bold; text-decoration: none; margin-top: 3rem;"
+        class="back-to-top">Back
+        To Top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • Made with ❤️</small>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

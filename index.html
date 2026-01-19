@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="NCS.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* OPEN BUTTON */
+    .door__open-btn {
+      width: 10rem;
+      height: 10rem;
+      background: radial-gradient(rgba(255, 0, 0, 0.6), black);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 99999;
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      letter-spacing: 5px;
+      font-size: 2rem;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid red;
+      cursor: pointer;
+      font-family: 'Gill Sans', Calibri, sans-serif;
+    }
+
+    /* DOOR BASE */
+    .door {
+      position: fixed;
+      top: 0;
+      width: 50vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* LEFT DOOR */
+    .left--door {
+      z-index: 9999;
+      left: 0;
+      justify-content: flex-start;
+    }
+
+    /* RIGHT DOOR */
+    .right--door {
+      z-index: 9999;
+      right: 0;
+    }
+
+    /* MAKE IMAGE FULL SIZE */
+    .door picture,
+    .door img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .door img {
+      object-fit: cover;
+      /* keeps image proportional */
+    }
+
+    /* LEFT DOOR — CROP FROM LEFT SIDE */
+    .left--door img {
+      object-position: 102.5% center;
+    }
+
+    /* RIGHT DOOR — CROP FROM RIGHT SIDE */
+    .right--door img {
+      object-position: -2.5% center;
+    }
+
+    .ncs-logo-icon {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 50%;
+      box-shadow: rgb(0, 0, 0) 0 0 20px;
+      background-image: url(NCS.png);
+      background-position: center;
+      background-size: cover;
+    }
+
+    .ncs-shadow-box {
+      box-shadow: 0 0 10px red;
+      animation: pulseShadow 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseShadow {
+      0% {
+        box-shadow: -10px -10px 20px red, 10px 10px 20px rgb(255, 0, 0);
+      }
+
+      50% {
+        box-shadow: 10px -10px 20px rgb(254, 0, 0),
+          -10px 10px 20px rgba(255, 0, 0, 0.988);
+      }
+
+      100% {
+        box-shadow: -10px -10px 20px red, 10px 10px 20px rgb(255, 0, 0);
+      }
+    }
+  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Naseeb Khan" />
+  <meta name="keywords" content="HTML, CSS, Naseeb Khan, NCS, NaseebCodeStudio" />
+  <meta name="description"
+    content="This is HTML & CSS Part 2 where you are going to learn the Advanced Topics/Concepts." />
+  <title>NaseebCodeStudio HTML CSS Part - 2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- DOOR NCS -->
+  <audio id="doorSound" preload="auto">
+    <source src="doorSound.mp3" type="audio/mpeg">
+  </audio>
+  <div class="door__open-btn">OPEN</div>
+
+  <div class="left--door door">
+    <picture>
+      <source type="image/webp" srcset="left__door.webp">
+      <source type="image/png" srcset="left__door.png">
+      <img src="left__door.png" alt="Left Door">
+    </picture>
+  </div>
+
+  <div class="right--door door">
+    <picture>
+      <source type="image/webp" srcset="right__door.webp">
+      <source type="image/png" srcset="right__door.png">
+      <img src="right__door.png" alt="Right Door">
+    </picture>
+  </div>
+  <!-- logo link -->
+  <a href="https://www.youtube.com/@NaseebCodeStudio/playlists" target="_blank">
+    <div class="ncs-logo-icon ncs-shadow-box"></div>
+  </a>
+  <!-- header  -->
+  <header class="site-header" style="display: flex; justify-content: center; background: linear-gradient(black, red);">
+    <div class="brand" style="text-align: center">
+      <h1 style="text-align: center">NaseebCodeStudio</h1>
+      <p class="tag" style="text-align: center">HTML &amp; CSS Part - 2<picture>
+          <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp">
+          <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="20" height="20">
+        </picture>
+      </p>
+      <a href="https://naseebncs.github.io/HTML_CSS_PART_1/" target="_blank">Visit Part - 1</a>
+    </div>
+  </header>
+
+  <!-- main  -->
+  <main class="container">
+    <section class="topics">
+      <h2>Topics:<picture>
+          <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp">
+          <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="20" height="20">
+        </picture>
+      </h2>
+
+      <a class="topic-card" href="lec1.html">
+        <div class="topic-info">
+          <h3>You'll Learn</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec3.html">
+        <div class="topic-info">
+          <h3>Box Model</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec4.html">
+        <div class="topic-info">
+          <h3>Sizing Elements</h3>
+        </div>
+      </a><a class="topic-card" href="lec5.html">
+        <div class="topic-info">
+          <h3>Overflowing</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec6.html">
+        <div class="topic-info">
+          <h3>Measurement Units</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec7.html">
+        <div class="topic-info">
+          <h3>Positioning, Cursor, Calc()</h3>
+        </div>
+      </a><a class="topic-card" href="lec8.html">
+        <div class="topic-info">
+          <h3>Floating Elements</h3>
+        </div>
+      </a><a class="topic-card" href="lec9.html">
+        <div class="topic-info">
+          <h3>Flex Box🔥</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec10.html">
+        <div class="topic-info">
+          <h3>Hiding Elements</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec12.html">
+        <div class="topic-info">
+          <h3>Media Queries</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec11.html">
+        <div class="topic-info">
+          <h3>Grid</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec12.html">
+        <div class="topic-info">
+          <h3>Typography</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec13.html">
+        <div class="topic-info">
+          <h3>Images</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec14.html">
+        <div class="topic-info">
+          <h3>Forms</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec15.html">
+        <div class="topic-info">
+          <h3>Animations</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="lec16.html">
+        <div class="topic-info">
+          <h3>Code In Shape</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="https://naseebncs.github.io/HTML_CSS_PART_3/index.html">
+        <div class="topic-info">
+          <h3 style="color: red;">What Next?</h3>
+        </div>
+      </a>
+      <a class="topic-card" href="GSAP.html">
+        <div class="topic-info">
+          <h3>GSAP</h3>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© NaseebCodeStudio • HTML &amp; CSS Notes<picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="20" height="20">
+      </picture></small>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+    integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="door_script.js"></script>
+</body>
+
+
+</html>
